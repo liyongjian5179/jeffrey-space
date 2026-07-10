@@ -160,7 +160,7 @@ export const JEFFREY_SITE_DATA = {
     ],
     hero: {
       eyebrow: "AI INFRA / SRE / ARCHITECTURE EFFICIENCY BUILDER",
-      title: "Make complex systems<br><span class=\"accent\">clear</span>.<br>Turn reliability into<br>product capability",
+      title: "Make systems<br><span class=\"accent\">clear</span>.<br>Build reliability<br>as a capability",
       description: "I'm Jeffrey Li, a Site Reliability Engineer focused on e-commerce, EV cloud services, AI Agent engineering and automation platforms.",
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agents × architecture-efficiency tools",
@@ -189,8 +189,8 @@ export const JEFFREY_SITE_DATA = {
       detailLabel: "View details"
     },
     about: {
-      title: "An engineer who connects reliability, efficiency and human judgment",
-      subtitle: "I like turning complex systems into observable, executable and reviewable structures. Technology is not decoration; it should reduce risk and help teams move better.",
+      title: "Connecting reliability, efficiency and judgment",
+      subtitle: "I turn complex systems into observable, executable and reviewable structures, so teams reduce risk and move better.",
       noteTitle: "KEY INSIGHT",
       note: "Reliable systems are built by clear boundaries, executable runbooks and continuous review, not only dashboards.",
       profile: {
@@ -198,7 +198,7 @@ export const JEFFREY_SITE_DATA = {
         label: "REAL PERSON",
         title: "Jeffrey Li",
         stickers: ["Jeffrey", "AI Infra", "SRE"],
-        description: "A real person behind the systems: SRE, AI Infra, automation platforms, and the habit of turning engineering experience into reusable notes."
+        description: "A real person behind the systems: SRE, AI Infra, automation platforms and reusable engineering notes."
       },
       now: {
         label: "NOW BUILDING",
