@@ -14,8 +14,8 @@ export const JEFFREY_SITE_DATA = {
       eyebrow: "AI INFRA / SRE / 架构效率工具建设者",
       title: "把复杂系统<br><span class=\"accent\">讲清楚</span>，<br>把可靠性<br>做成产品能力",
       description: "我是 Jeffrey Li，一名热爱技术的 SRE 工程师。主攻电商、新能源汽车和复杂系统稳定性建设，也在持续探索 AI Agent、自动化平台和架构效率工具。",
-      noteTitle: "SYSTEM NOTE",
-      note: "温暖工程手册风，不做冷冰冰的监控大屏。",
+      noteTitle: "CURRENT FOCUS",
+      note: "SRE × AI Agent × 架构效率工具",
       actions: [
         ["projects", "查看热爱", "btn-primary"],
         ["experience", "浏览经历", "btn-secondary"],
@@ -51,6 +51,15 @@ export const JEFFREY_SITE_DATA = {
         title: "Jeffrey Li",
         stickers: ["Jeffrey", "AI Infra", "SRE"],
         description: "真实的我在这里：长期和复杂系统、稳定性与效率工具打交道，也持续把工程经验整理成可复用的系统笔记。"
+      },
+      now: {
+        label: "NOW BUILDING",
+        title: "把一线经验做成可复用工具",
+        items: [
+          ["SRE", "重保、容量、风险盘点和复盘模板"],
+          ["AI Agent", "把重复判断变成可追踪的工作流"],
+          ["Personal IP", "文章、插图和网站形成统一表达系统"]
+        ]
       },
       items: [
         ["01", "稳定性建设", "重保、容量、风险盘点、高可用演练，把复杂链路变成可验证机制。"],
@@ -151,10 +160,10 @@ export const JEFFREY_SITE_DATA = {
     ],
     hero: {
       eyebrow: "AI INFRA / SRE / ARCHITECTURE EFFICIENCY BUILDER",
-      title: "Make complex systems<br><span class=\"accent\">understandable</span>, and reliability<br>productized",
-      description: "I'm Jeffrey Li, a Site Reliability Engineer focused on e-commerce, EV cloud services, system reliability, AI Agent engineering and automation platforms.",
-      noteTitle: "SYSTEM NOTE",
-      note: "Warm engineering handbook style, not a cold monitoring wall.",
+      title: "Make complex systems<br><span class=\"accent\">clear</span>.<br>Turn reliability into<br>product capability",
+      description: "I'm Jeffrey Li, a Site Reliability Engineer focused on e-commerce, EV cloud services, AI Agent engineering and automation platforms.",
+      noteTitle: "CURRENT FOCUS",
+      note: "SRE × AI Agents × architecture-efficiency tools",
       actions: [
         ["projects", "View passions", "btn-primary"],
         ["experience", "Explore experience", "btn-secondary"],
@@ -190,6 +199,15 @@ export const JEFFREY_SITE_DATA = {
         title: "Jeffrey Li",
         stickers: ["Jeffrey", "AI Infra", "SRE"],
         description: "A real person behind the systems: SRE, AI Infra, automation platforms, and the habit of turning engineering experience into reusable notes."
+      },
+      now: {
+        label: "NOW BUILDING",
+        title: "Turning field experience into reusable tools",
+        items: [
+          ["SRE", "Assurance, capacity, risk review and postmortem templates"],
+          ["AI Agent", "Traceable workflows for repeated engineering judgment"],
+          ["Personal IP", "A unified system for writing, visuals and this site"]
+        ]
       },
       items: [
         ["01", "Reliability engineering", "Production assurance, capacity planning, risk review and high availability drills."],

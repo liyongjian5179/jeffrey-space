@@ -5,6 +5,9 @@ let toastTimer;
 let activeProjectIndex = 0;
 let activeProjectImageIndex = 0;
 let consoleTimers = [];
+let navTicking = false;
+let lastQrTrigger = null;
+let lastProjectTrigger = null;
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const get = (path) => path.split(".").reduce((obj, key) => obj && obj[key], data[currentLang]);
@@ -14,9 +17,13 @@ function render() {
   $$("[data-i18n]").forEach((el) => { el.textContent = get(el.dataset.i18n) || ""; });
   $$("[data-i18n-html]").forEach((el) => { el.innerHTML = get(el.dataset.i18nHtml) || ""; });
   $$("[data-i18n], [data-i18n-html]").forEach((el) => { el.hidden = !el.textContent.trim(); });
-  $$(".lang button").forEach((btn) => btn.classList.toggle("active", btn.dataset.lang === currentLang));
+  $$(".lang button").forEach((btn) => {
+    const isActive = btn.dataset.lang === currentLang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
+  });
 
-  $("#navLinks").innerHTML = data[currentLang].nav.map(([id, label]) => `<a href="#${id}">${label}</a>`).join("");
+  $("#navLinks").innerHTML = data[currentLang].nav.map(([id, label]) => `<a href="#${id}" data-nav-link="${id}">${label}</a>`).join("");
   $("#heroActions").innerHTML = data[currentLang].hero.actions.map(([id, label, klass]) => `<a class="btn ${klass}" href="#${id}">${label}</a>`).join("");
   $("#statusStrip").innerHTML = data[currentLang].hero.status.map(([value, label]) => `<div class="status-card"><b>${value}</b><span>${label}</span></div>`).join("");
   $("#heroConsole").innerHTML = `
@@ -56,9 +63,21 @@ function render() {
       <p>${aboutProfile.description}</p>
     </figcaption>
   ` : "";
-  $("#metricsGrid").innerHTML = data[currentLang].about.metrics.map(([value, label]) => `
-    <div class="metric-card"><span class="value">${value}</span><span class="label">${label}</span></div>
-  `).join("");
+  const aboutNow = data[currentLang].about.now;
+  $("#nowCard").innerHTML = aboutNow ? `
+    <div class="now-card-head">
+      <span>${aboutNow.label}</span>
+      <strong>${aboutNow.title}</strong>
+    </div>
+    <div class="now-card-list">
+      ${aboutNow.items.map(([label, desc]) => `
+        <div class="now-card-item">
+          <b>${label}</b>
+          <span>${desc}</span>
+        </div>
+      `).join("")}
+    </div>
+  ` : "";
   $("#beliefSlides").innerHTML = data[currentLang].beliefs.items.map(([num, text, meta], index) => `
     <article class="belief-slide belief-slide-${index + 1} reveal">
       <span class="belief-number">${num}</span>
@@ -66,23 +85,33 @@ function render() {
       <small>${meta}</small>
     </article>
   `).join("");
-  $("#projectGrid").innerHTML = data[currentLang].projects.items.map(([title, desc, tags, image, input, output], index) => `
-    <article class="project-card reveal">
-      <img src="${image}" alt="${title}">
-      <div class="project-body">
-        <h3>${title}</h3>
-        <p>${desc}</p>
-        ${input && output ? `
-          <div class="system-frame">
-            <div><b>${data[currentLang].systemFrame.inputLabel}</b><span>${input}</span></div>
-            <div><b>${data[currentLang].systemFrame.outputLabel}</b><span>${output}</span></div>
-          </div>
-        ` : ""}
-        <div class="tags">${tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
-        <button class="project-detail-btn" type="button" data-open-project="${index}">${data[currentLang].systemFrame.detailLabel}</button>
-      </div>
-    </article>
-  `).join("");
+  $("#projectGrid").innerHTML = data[currentLang].projects.items.map(([title, desc, tags, image, input, output], index) => {
+    const isFeatured = index === 0;
+    const projectLabel = isFeatured
+      ? (currentLang === "zh" ? "主线热爱" : "Featured")
+      : String(index + 1).padStart(2, "0");
+
+    return `
+      <article class="project-card ${isFeatured ? "project-card-featured" : ""} reveal">
+        <div class="project-media">
+          <img src="${image}" alt="${title}" loading="lazy" decoding="async">
+        </div>
+        <div class="project-body">
+          <span class="project-kicker">${projectLabel}</span>
+          <h3>${title}</h3>
+          <p>${desc}</p>
+          ${input && output ? `
+            <div class="system-frame">
+              <div><b>${data[currentLang].systemFrame.inputLabel}</b><span>${input}</span></div>
+              <div><b>${data[currentLang].systemFrame.outputLabel}</b><span>${output}</span></div>
+            </div>
+          ` : ""}
+          <div class="tags">${tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+          <button class="project-detail-btn" type="button" data-open-project="${index}">${data[currentLang].systemFrame.detailLabel}</button>
+        </div>
+      </article>
+    `;
+  }).join("");
   $("#timeline").innerHTML = data[currentLang].experience.items.map(([date, title, company, desc, points], index) => {
     const [logo, link] = data[currentLang].experience.companies[index] || [];
     const labels = data[currentLang].experience.frameLabels;
@@ -137,6 +166,7 @@ function render() {
   initProjectTilt();
   attachReveal();
   scrollToCurrentHash();
+  requestNavigationStateUpdate();
 }
 
 function clearConsoleTimers() {
@@ -222,8 +252,9 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("visible"), 2400);
 }
 
-function openQrModal(image) {
+function openQrModal(image, trigger = document.activeElement) {
   const modal = $("#qrModal");
+  lastQrTrigger = trigger;
   $("#qrTitle").textContent = data[currentLang].contact.qrTitle;
   $("#qrDescription").textContent = data[currentLang].contact.qrDescription;
   $("#qrImage").src = image;
@@ -233,9 +264,13 @@ function openQrModal(image) {
   $(".qr-close").focus();
 }
 
-function closeQrModal() {
-  $("#qrModal").hidden = true;
+function closeQrModal(restore = true) {
+  const modal = $("#qrModal");
+  if (modal.hidden) return;
+  modal.hidden = true;
   document.body.classList.remove("modal-open");
+  if (restore) restoreFocus(lastQrTrigger);
+  lastQrTrigger = null;
 }
 
 function getProject(index = activeProjectIndex) {
@@ -254,16 +289,44 @@ function renderProjectModalImage() {
   $("#projectModalImage").src = image;
   $("#projectModalImage").alt = `${project[0]} ${activeProjectImageIndex + 1}`;
   $("#projectModalDots").innerHTML = images.map((_, index) => `
-    <button class="${index === activeProjectImageIndex ? "active" : ""}" type="button" data-project-dot="${index}" aria-label="Show image ${index + 1}"></button>
+    <button class="${index === activeProjectImageIndex ? "active" : ""}" type="button" data-project-dot="${index}" aria-label="Show image ${index + 1}" ${index === activeProjectImageIndex ? 'aria-current="true"' : ""}></button>
   `).join("");
   $$("[data-project-prev], [data-project-next]").forEach((btn) => {
     btn.hidden = images.length < 2;
   });
 }
 
-function openProjectModal(index) {
+function getFocusableElements(root) {
+  return $$('a[href], button:not([disabled]):not([hidden]), input, select, textarea, [tabindex]:not([tabindex="-1"])', root)
+    .filter((el) => !el.hidden && el.offsetParent !== null);
+}
+
+function restoreFocus(el) {
+  if (el && typeof el.focus === "function" && document.contains(el)) {
+    el.focus();
+  }
+}
+
+function trapModalFocus(event, modal) {
+  if (event.key !== "Tab" || modal.hidden) return;
+  const focusable = getFocusableElements(modal);
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function openProjectModal(index, trigger = document.activeElement) {
   const project = getProject(index);
   if (!project) return;
+  lastProjectTrigger = trigger;
   activeProjectIndex = index;
   activeProjectImageIndex = 0;
   const [title, desc, tags, , input, output, detail] = project;
@@ -281,9 +344,13 @@ function openProjectModal(index) {
   $(".project-close").focus();
 }
 
-function closeProjectModal() {
-  $("#projectModal").hidden = true;
+function closeProjectModal(restore = true) {
+  const modal = $("#projectModal");
+  if (modal.hidden) return;
+  modal.hidden = true;
   document.body.classList.remove("modal-open");
+  if (restore) restoreFocus(lastProjectTrigger);
+  lastProjectTrigger = null;
 }
 
 function shiftProjectImage(delta) {
@@ -300,6 +367,8 @@ function scrollToSection(id, updateHash = true) {
   target.scrollTop = 0;
   target.scrollIntoView({ behavior: "smooth", block: "start" });
   if (updateHash) history.pushState(null, "", `#${id}`);
+  setActiveNav(id);
+  requestNavigationStateUpdate();
   return true;
 }
 
@@ -308,6 +377,54 @@ function scrollToCurrentHash() {
   requestAnimationFrame(() => {
     scrollToSection(decodeURIComponent(window.location.hash.slice(1)), false);
   });
+}
+
+function getNavSectionIds() {
+  return data[currentLang].nav
+    .map(([id]) => id)
+    .filter((id) => document.getElementById(id));
+}
+
+function setActiveNav(activeId) {
+  $$("[data-nav-link]").forEach((link) => {
+    const isActive = link.dataset.navLink === activeId;
+    link.classList.toggle("active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function updateScrollProgress() {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = maxScroll > 0 ? Math.min(Math.max(window.scrollY / maxScroll, 0), 1) : 0;
+  document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
+}
+
+function updateNavigationState() {
+  updateScrollProgress();
+
+  const anchorLine = window.scrollY + Math.max(96, window.innerHeight * 0.32);
+  const sections = getNavSectionIds().map((id) => ({ id, el: document.getElementById(id) }));
+  let activeId = sections[0]?.id || "home";
+
+  sections.forEach(({ id, el }) => {
+    if (el.offsetTop <= anchorLine) activeId = id;
+  });
+
+  const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+  if (nearBottom && sections.length) activeId = sections[sections.length - 1].id;
+
+  setActiveNav(activeId);
+  navTicking = false;
+}
+
+function requestNavigationStateUpdate() {
+  if (navTicking) return;
+  navTicking = true;
+  requestAnimationFrame(updateNavigationState);
 }
 
 function attachReveal() {
@@ -347,7 +464,7 @@ document.addEventListener("click", async (event) => {
 
   const projectButton = event.target.closest("[data-open-project]");
   if (projectButton) {
-    openProjectModal(Number(projectButton.dataset.openProject));
+    openProjectModal(Number(projectButton.dataset.openProject), projectButton);
     return;
   }
 
@@ -375,7 +492,7 @@ document.addEventListener("click", async (event) => {
 
   const qrButton = event.target.closest("[data-open-qr]");
   if (qrButton) {
-    openQrModal(qrButton.dataset.openQr);
+    openQrModal(qrButton.dataset.openQr, qrButton);
     return;
   }
 
@@ -397,13 +514,32 @@ document.addEventListener("click", async (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !$("#qrModal").hidden) closeQrModal();
-  if (event.key === "Escape" && !$("#projectModal").hidden) closeProjectModal();
+  const qrModal = $("#qrModal");
+  const projectModal = $("#projectModal");
+
+  trapModalFocus(event, qrModal);
+  trapModalFocus(event, projectModal);
+
+  if (event.key === "Escape" && !qrModal.hidden) {
+    event.preventDefault();
+    closeQrModal();
+    return;
+  }
+  if (event.key === "Escape" && !projectModal.hidden) {
+    event.preventDefault();
+    closeProjectModal();
+    return;
+  }
   if ($("#projectModal").hidden) return;
   if (event.key === "ArrowLeft") shiftProjectImage(-1);
   if (event.key === "ArrowRight") shiftProjectImage(1);
 });
 
-window.addEventListener("hashchange", scrollToCurrentHash);
+window.addEventListener("scroll", requestNavigationStateUpdate, { passive: true });
+window.addEventListener("resize", requestNavigationStateUpdate);
+window.addEventListener("hashchange", () => {
+  scrollToCurrentHash();
+  requestNavigationStateUpdate();
+});
 
 render();

@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jeffrey Li - AI Infra / SRE / 架构效率工具建设者">
+  <meta name="description" content="Jeffrey Li 的个人数字空间：关注 SRE、AI Infra、Agent 工程化、自动化平台、工程经验复用与个人 IP。">
   <meta name="keywords" content="Jeffrey Li,SRE,AI Infra,Site Reliability Engineer,架构效率,稳定性">
   <meta name="author" content="Jeffrey Li">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#2B7FD8">
+  <meta name="application-name" content="Jeffrey Space">
+  <meta name="apple-mobile-web-app-title" content="Jeffrey Space">
+  <link rel="canonical" href="https://hijeffrey.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hijeffrey.com/">
+  <meta property="og:site_name" content="Jeffrey Space">
+  <meta property="og:title" content="Jeffrey Li · AI Infra / SRE">
+  <meta property="og:description" content="一个关于 SRE、AI Infra、Agent 工程化、自动化平台和工程经验复用的个人数字空间。">
+  <meta property="og:image" content="https://hijeffrey.com/assets/images/jeffrey-ip-hero.png">
+  <meta property="og:image:alt" content="Jeffrey IP illustration">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jeffrey Li · AI Infra / SRE">
+  <meta name="twitter:description" content="SRE、AI Infra、Agent 工程化、自动化平台和工程经验复用。">
+  <meta name="twitter:image" content="https://hijeffrey.com/assets/images/jeffrey-ip-hero.png">
   <title>Jeffrey Li · AI Infra / SRE</title>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <script defer src="https://umami.5179.top/script.js" data-website-id="7f386add-6ef3-4c02-9f7c-fcaf442d64c1"></script>
@@ -23,17 +40,17 @@
       </a>
       <div class="nav-links" id="navLinks"></div>
       <div class="lang" aria-label="Language switch">
-        <button type="button" data-lang="zh" class="active">简</button>
+        <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
         <span>/</span>
-        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
       </div>
     </div>
   </nav>
 
   <div class="lang mobile-lang" aria-label="Mobile language switch">
-    <button type="button" data-lang="zh" class="active">简</button>
+    <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
     <span>/</span>
-    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
   </div>
 
   <main>
@@ -77,11 +94,7 @@
           </div>
           <div class="about-side reveal">
             <figure class="profile-photo-card" id="profilePhotoCard"></figure>
-            <div class="metrics-grid" id="metricsGrid"></div>
-            <div class="note-card">
-              <strong data-i18n="about.noteTitle"></strong>
-              <p data-i18n="about.note"></p>
-            </div>
+            <div class="now-card" id="nowCard"></div>
           </div>
         </div>
       </div>
@@ -202,7 +215,7 @@
   <div class="qr-modal" id="qrModal" hidden>
     <button class="qr-backdrop" type="button" data-close-qr aria-label="Close QR modal"></button>
     <div class="qr-dialog" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
-      <button class="qr-close" type="button" data-close-qr aria-label="Close">×</button>
+      <button class="qr-close" type="button" data-close-qr aria-label="Close QR modal">×</button>
       <span class="eyebrow" id="qrKicker">WECHAT</span>
       <h2 id="qrTitle"></h2>
       <img id="qrImage" src="" alt="">
@@ -213,7 +226,7 @@
   <div class="project-modal" id="projectModal" hidden>
     <button class="project-backdrop" type="button" data-close-project aria-label="Close project details"></button>
     <article class="project-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
-      <button class="project-close" type="button" data-close-project aria-label="Close">×</button>
+      <button class="project-close" type="button" data-close-project aria-label="Close project details">×</button>
       <div class="project-gallery">
         <img id="projectModalImage" src="" alt="">
         <button class="gallery-btn gallery-prev" type="button" data-project-prev aria-label="Previous image">‹</button>
