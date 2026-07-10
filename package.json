@@ -1,0 +1,21 @@
+{
+  "name": "jeffrey-space",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://hijeffrey.com",
+  "description": "Jeffrey Li's personal digital space for SRE, AI Infra, writing, projects, and identity.",
+  "scripts": {
+    "dev": "python3 -m http.server 8765",
+    "serve": "python3 -m http.server 8765"
+  },
+  "keywords": [
+    "jeffrey",
+    "jeffrey-space",
+    "personal-site",
+    "sre",
+    "ai-infra",
+    "design-system"
+  ],
+  "author": "Jeffrey Li",
+  "license": "UNLICENSED"
+}

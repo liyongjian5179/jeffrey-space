@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Family system illustration</title>
+  <desc id="desc">A warm handbook-style placeholder for Jeffrey's family section.</desc>
+  <rect width="960" height="640" fill="#FFF7E8"/>
+  <path d="M0 520 C180 470 290 555 470 505 C650 455 760 515 960 470 L960 640 L0 640 Z" fill="#F4D758" opacity=".35"/>
+  <path d="M78 110 H882 V510 H78 Z" fill="#FFFFFF" stroke="#1E4F8A" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M112 150 H848" stroke="#1E4F8A" stroke-width="4" stroke-dasharray="14 12" opacity=".35"/>
+  <circle cx="210" cy="312" r="74" fill="#EAF3FF" stroke="#2B7FD8" stroke-width="6"/>
+  <circle cx="376" cy="312" r="74" fill="#EAF3FF" stroke="#2B7FD8" stroke-width="6"/>
+  <circle cx="584" cy="312" r="58" fill="#FFF3B8" stroke="#F4D758" stroke-width="6"/>
+  <circle cx="718" cy="312" r="58" fill="#FFF3B8" stroke="#F4D758" stroke-width="6"/>
+  <path d="M172 302 q38 35 76 0" fill="none" stroke="#1A1A2E" stroke-width="6" stroke-linecap="round"/>
+  <path d="M338 302 q38 35 76 0" fill="none" stroke="#1A1A2E" stroke-width="6" stroke-linecap="round"/>
+  <path d="M552 307 q32 27 64 0" fill="none" stroke="#1A1A2E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M686 307 q32 27 64 0" fill="none" stroke="#1A1A2E" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="188" cy="286" r="8" fill="#1A1A2E"/>
+  <circle cx="232" cy="286" r="8" fill="#1A1A2E"/>
+  <circle cx="354" cy="286" r="8" fill="#1A1A2E"/>
+  <circle cx="398" cy="286" r="8" fill="#1A1A2E"/>
+  <circle cx="566" cy="290" r="7" fill="#1A1A2E"/>
+  <circle cx="602" cy="290" r="7" fill="#1A1A2E"/>
+  <circle cx="700" cy="290" r="7" fill="#1A1A2E"/>
+  <circle cx="736" cy="290" r="7" fill="#1A1A2E"/>
+  <path d="M170 410 H750" stroke="#1E4F8A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M238 410 C268 455 318 455 348 410" fill="none" stroke="#E84A5F" stroke-width="5" stroke-linecap="round"/>
+  <path d="M444 410 C474 455 524 455 554 410" fill="none" stroke="#E84A5F" stroke-width="5" stroke-linecap="round"/>
+  <text x="480" y="205" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="46" font-weight="700" fill="#1E4F8A">FAMILY_SYSTEM</text>
+  <text x="480" y="470" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="30" font-weight="700" fill="#1A1A2E">Jeffrey · Rong · Team of Four</text>
+  <path d="M820 238 l16 34 38 5 -28 26 7 37 -33 -18 -34 18 7 -37 -27 -26 38 -5z" fill="#F4D758" stroke="#1E4F8A" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M126 442 l20 18 28 -34" fill="none" stroke="#2B7FD8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

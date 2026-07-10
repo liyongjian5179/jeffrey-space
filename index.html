@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jeffrey Li - AI Infra / SRE / 架构效率工具建设者">
+  <meta name="keywords" content="Jeffrey Li,SRE,AI Infra,Site Reliability Engineer,架构效率,稳定性">
+  <meta name="author" content="Jeffrey Li">
+  <title>Jeffrey Li · AI Infra / SRE</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <script defer src="https://umami.5179.top/script.js" data-website-id="7f386add-6ef3-4c02-9f7c-fcaf442d64c1"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fira+Code:wght@400;500;700&family=Fraunces:opsz,wght@9..144,900&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css?v=20260710-belief-en-layout">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Jeffrey home">
+        <span class="brand-mark">J</span>
+        <span>Jeffrey · SRE</span>
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="lang" aria-label="Language switch">
+        <button type="button" data-lang="zh" class="active">简</button>
+        <span>/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lang mobile-lang" aria-label="Mobile language switch">
+    <button type="button" data-lang="zh" class="active">简</button>
+    <span>/</span>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow" data-i18n="hero.eyebrow"></span>
+          <h1 data-i18n-html="hero.title"></h1>
+          <p class="lead" data-i18n="hero.description"></p>
+          <div class="hero-actions" id="heroActions"></div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="portrait-card">
+            <img src="assets/images/jeffrey-ip-hero.png" alt="Jeffrey IP illustration">
+            <div class="photo-note">
+              <strong data-i18n="hero.noteTitle"></strong>
+              <span data-i18n="hero.note"></span>
+            </div>
+          </div>
+          <div class="runbook-console" id="heroConsole" aria-label="Reliability runbook snapshot"></div>
+          <div class="status-strip" id="statusStrip"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <span class="section-num">01</span>
+            <span class="section-kicker">SYSTEM_DEVELOPER_MANIFESTO</span>
+          </div>
+          <div>
+            <h2 data-i18n="about.title"></h2>
+            <p class="section-desc" data-i18n="about.subtitle"></p>
+          </div>
+        </header>
+        <div class="about-grid">
+          <div class="manual-card reveal">
+            <div class="manual-list" id="aboutList"></div>
+          </div>
+          <div class="about-side reveal">
+            <figure class="profile-photo-card" id="profilePhotoCard"></figure>
+            <div class="metrics-grid" id="metricsGrid"></div>
+            <div class="note-card">
+              <strong data-i18n="about.noteTitle"></strong>
+              <p data-i18n="about.note"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="beliefs-section" id="beliefs">
+      <div class="container">
+        <header class="beliefs-head reveal">
+          <span class="section-kicker">ENGINEERING_BELIEFS</span>
+          <h2 data-i18n="beliefs.title"></h2>
+          <p class="section-desc" data-i18n="beliefs.subtitle"></p>
+        </header>
+      </div>
+      <div class="belief-slides" id="beliefSlides"></div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <span class="section-num">03</span>
+            <span class="section-kicker">PASSIONS_AS_SYSTEM_INPUTS</span>
+          </div>
+          <div>
+            <h2 data-i18n="projects.title"></h2>
+            <p class="section-desc" data-i18n="projects.subtitle"></p>
+          </div>
+        </header>
+        <div class="project-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <span class="section-num">04</span>
+            <span class="section-kicker">RELIABILITY_RUNBOOK</span>
+          </div>
+          <div>
+            <h2 data-i18n="experience.title"></h2>
+            <p class="section-desc" data-i18n="experience.subtitle"></p>
+          </div>
+        </header>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <span class="section-num">05</span>
+            <span class="section-kicker">WHAT_I_CAN_BUILD</span>
+          </div>
+          <div>
+            <h2 data-i18n="skills.title"></h2>
+            <p class="section-desc" data-i18n="skills.subtitle"></p>
+          </div>
+        </header>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="outputs">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <span class="section-num">06</span>
+            <span class="section-kicker">PUBLIC_OUTPUTS</span>
+          </div>
+          <div>
+            <h2 data-i18n="outputs.title"></h2>
+            <p class="section-desc" data-i18n="outputs.subtitle"></p>
+          </div>
+        </header>
+        <div class="note-card output-note reveal">
+          <strong data-i18n="outputs.noteTitle"></strong>
+          <p data-i18n="outputs.note"></p>
+        </div>
+        <div class="outputs-grid" id="outputsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <h2 data-i18n="contact.title"></h2>
+            <p data-i18n="contact.description"></p>
+          </div>
+          <div class="contact-actions" id="contactActions"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Jeffrey · AI Infra × SRE × Agent</strong>
+        <div class="request-data">
+          <span id="busuanzi_container_site_pv">PV <span id="busuanzi_value_site_pv">--</span></span>
+          <span id="busuanzi_container_site_uv">UV <span id="busuanzi_value_site_uv">--</span></span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <span>© 2026 Site Reliability Engineer.</span>
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">京ICP备19051297号</a>
+        <a class="beian-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=11011402054821" target="_blank" rel="noreferrer">
+          <img src="assets/images/beiantubiao.png" alt="" aria-hidden="true">
+          <span>京公网安备11011402054821号</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="qr-modal" id="qrModal" hidden>
+    <button class="qr-backdrop" type="button" data-close-qr aria-label="Close QR modal"></button>
+    <div class="qr-dialog" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+      <button class="qr-close" type="button" data-close-qr aria-label="Close">×</button>
+      <span class="eyebrow" id="qrKicker">WECHAT</span>
+      <h2 id="qrTitle"></h2>
+      <img id="qrImage" src="" alt="">
+      <p id="qrDescription"></p>
+    </div>
+  </div>
+
+  <div class="project-modal" id="projectModal" hidden>
+    <button class="project-backdrop" type="button" data-close-project aria-label="Close project details"></button>
+    <article class="project-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button class="project-close" type="button" data-close-project aria-label="Close">×</button>
+      <div class="project-gallery">
+        <img id="projectModalImage" src="" alt="">
+        <button class="gallery-btn gallery-prev" type="button" data-project-prev aria-label="Previous image">‹</button>
+        <button class="gallery-btn gallery-next" type="button" data-project-next aria-label="Next image">›</button>
+        <div class="gallery-dots" id="projectModalDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="eyebrow" id="projectModalKicker"></span>
+        <h2 id="projectModalTitle"></h2>
+        <p id="projectModalDescription"></p>
+        <div class="system-frame project-modal-frame" id="projectModalFrame"></div>
+        <div class="tags" id="projectModalTags"></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="site-toast" id="siteToast" role="status" aria-live="polite"></div>
+
+  <script src="src/content.js?v=20260710-belief-subtitles-off"></script>
+  <script src="src/app.js?v=20260709-avatar-labels"></script>
+</body>
+</html>

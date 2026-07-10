@@ -1,0 +1,94 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<<
+/Title (张三的简历)
+/Creator (Simple PDF Generator)
+/Producer (PDF Library)
+/CreationDate (D:20230101000000)
+>>
+endobj
+2 0 obj
+<<
+/Type /Catalog
+/Pages 3 0 R
+>>
+endobj
+3 0 obj
+<<
+/Type /Pages
+/Kids [4 0 R]
+/Count 1
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Parent 3 0 R
+/MediaBox [0 0 595 842]
+/Contents 6 0 R
+/Resources <<
+/Font <<
+/F1 7 0 R
+>>
+>>
+>>
+endobj
+5 0 obj
+<<
+/Type /XObject
+/Subtype /Image
+/Width 1
+/Height 1
+/ColorSpace /DeviceRGB
+/BitsPerComponent 8
+/Length 3
+>>
+stream
+0 0 0
+endstream
+endobj
+6 0 obj
+<<
+/Length 100
+>>
+stream
+BT
+/F1 12 Tf
+50 750 Td
+(张三的简历) Tj
+0 -50 Td
+(联系方式: zhangsan@example.com | 电话: 138-0000-0000) Tj
+0 -30 Td
+(个人简介) Tj
+0 -20 Td
+(这是一份占位简历。在实际应用中，这里会显示详细的个人简历内容。) Tj
+ET
+endstream
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000120 00000 n 
+0000000171 00000 n 
+0000000232 00000 n 
+0000000400 00000 n 
+0000000498 00000 n 
+0000000650 00000 n 
+trailer
+<<
+/Size 8
+/Root 2 0 R
+/Info 1 0 R
+>>
+startxref
+750
+%%EOF
