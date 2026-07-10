@@ -114,7 +114,7 @@ After changes:
 - Cloudflare Pages build command: `npm run build`.
 - Cloudflare Pages output directory: `dist`.
 - Cloudflare Pages deploy command should be empty; do not set `npx wrangler deploy` for the Pages static flow.
-- If Cloudflare requires a Deploy command, use `npm run deploy:cloudflare`; `wrangler.jsonc` must keep `assets.directory` pointed at `./dist`.
+- If Cloudflare requires Deploy/Version commands, use `npm run deploy:cloudflare` for both; `wrangler.jsonc` must keep `assets.directory` pointed at `./dist`.
 - `CNAME` contains `hijeffrey.com`.
 - If using a GitHub user site, the remote repository may be named `liyongjian5179.github.io`.
 - The project identity should remain `jeffrey-space`.

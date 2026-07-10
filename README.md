@@ -110,20 +110,30 @@ liyongjian5179.github.io
 
 这种情况下，项目内部名称仍然可以保持为 `jeffrey-space`。
 
-Cloudflare Pages 推荐配置：
+当前 Cloudflare 控制台配置（Workers / Static Assets，Deploy command 必填的界面）：
+
+```text
+构建命令 / Build command: npm run build
+部署命令 / Deploy command: npm run deploy:cloudflare
+版本命令 / Version command: npm run deploy:cloudflare
+根目录 / Root directory: 留空，使用仓库根目录
+```
+
+如果页面上还有 Output directory / 构建输出目录字段，填写：
+
+```text
+dist
+```
+
+这个流程依赖仓库内的 `wrangler.jsonc`，它会告诉 Wrangler 把 `./dist` 作为静态资源目录发布。
+
+如果以后新建的是纯 Cloudflare Pages 自动发布项目，才使用下面这种配置：
 
 ```text
 Build command: npm run build
 Build output directory: dist
 Root directory: 留空，使用仓库根目录
-Deploy command: 留空，不要填 npx wrangler deploy
-```
-
-如果当前 Cloudflare 项目必须填写 Deploy command，说明它更接近 Workers / Static Assets 的 Git 部署流程。此时使用仓库内的 `wrangler.jsonc`：
-
-```text
-Build command: npm run build
-Deploy command: npm run deploy:cloudflare
+Deploy command: 留空
 ```
 
 构建产物会输出到 `dist/`。Vite 会压缩 JS/CSS 并生成 hash 文件；原始 `assets/` 和 `CNAME` 会复制进 `dist/`，保证动态图片路径和自定义域名文件可用。
@@ -251,20 +261,30 @@ liyongjian5179.github.io
 
 In that case, `jeffrey-space` can remain the project name in `package.json`, README, and internal documentation.
 
-Cloudflare Pages recommended settings:
+Current Cloudflare dashboard settings for this project (Workers / Static Assets, where Deploy command is required):
+
+```text
+Build command: npm run build
+Deploy command: npm run deploy:cloudflare
+Version command: npm run deploy:cloudflare
+Root directory: leave empty and use the repository root
+```
+
+If the page also has an Output directory field, set it to:
+
+```text
+dist
+```
+
+This flow relies on the checked-in `wrangler.jsonc`, which tells Wrangler to publish `./dist` as static assets.
+
+Only use the following settings for a pure Cloudflare Pages auto-publish project:
 
 ```text
 Build command: npm run build
 Build output directory: dist
 Root directory: leave empty and use the repository root
-Deploy command: leave empty; do not set npx wrangler deploy
-```
-
-If the current Cloudflare project requires a Deploy command, it is closer to the Workers / Static Assets Git deployment flow. In that case, use the checked-in `wrangler.jsonc`:
-
-```text
-Build command: npm run build
-Deploy command: npm run deploy:cloudflare
+Deploy command: leave empty
 ```
 
 The production build outputs to `dist/`. Vite minifies JS/CSS and emits hashed files; the original `assets/` directory and `CNAME` are copied into `dist/` so dynamic image paths and custom-domain setup keep working.

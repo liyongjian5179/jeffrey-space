@@ -77,6 +77,7 @@ Cloudflare Pages output directory: dist
 Cloudflare Pages root directory: repository root
 Cloudflare Pages deploy command: empty; do not use npx wrangler deploy
 Cloudflare Workers Static Assets deploy command: npm run deploy:cloudflare
+Cloudflare Workers Static Assets version command: npm run deploy:cloudflare
 ```
 
 The build script runs `vite build`, then copies `assets/` and `CNAME` into `dist/`.
