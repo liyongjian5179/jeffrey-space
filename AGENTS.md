@@ -17,6 +17,7 @@ Read these files first:
 2. `PROJECT_NOTES.md` for design, content, asset, font, and deployment decisions.
 3. `PROJECT_HISTORY.md` for the project's journey and why old migration assets were removed.
 4. `RESPONSIVE_CHECKLIST.md` before layout or visual changes.
+5. `liyongjian5179/jeffrey-design-system` for the upstream Jeffrey visual system reference when making design or interaction changes.
 
 ## Architecture
 
@@ -64,6 +65,24 @@ Keep the site in the warm engineering handbook style:
 
 Avoid turning the site into a generic portfolio template or a dark monitoring dashboard.
 
+## Design System Reference
+
+The visual and interaction direction is based on:
+
+```text
+https://github.com/liyongjian5179/jeffrey-design-system
+```
+
+When changing layout, visual components, or effects, treat that repository as the upstream design reference. Key files there:
+
+- `brand-dna.md`: brand colors, typography, tone, and hard design constraints.
+- `SKILL.md`: Jeffrey design workflow.
+- `references/layouts.md`: approved layout patterns.
+- `references/components.md`: component and effect patterns.
+- `references/checklist.md`: P0/P1/P2 visual quality checks.
+
+Preferred effect patterns include scroll reveal, typewriter/typing output, restrained hover/tilt, modal detail views, hand-drawn highlights, pixel image reveal, kinetic text, and small spinning text. Use motion sparingly, respect `prefers-reduced-motion`, and avoid bounce/elastic, neon, glassmorphism, generic SaaS gradients, or decorative technical elements with no information value.
+
 ## Content Rules
 
 - Keep Chinese and English versions aligned in structure, but do not force literal translations.
@@ -84,7 +103,7 @@ After changes:
 
 - Run `node --check src/app.js`.
 - Run `node --check src/content.js`.
-- Run `npm run build` and confirm `dist/` contains `index.html`, `_assets/`, `assets/`, and `CNAME`.
+- Run `npm run build` and confirm `dist/` contains `index.html`, `assets/js/`, `assets/css/`, `assets/media/`, `assets/images/`, `assets/docs/`, and `CNAME`.
 - Search for stale copy or old project names when renaming.
 - Check Chinese and English layouts.
 - For visual changes, review the breakpoints in `RESPONSIVE_CHECKLIST.md`.

@@ -6,8 +6,8 @@
   "description": "Jeffrey Li's personal digital space for SRE, AI Infra, writing, projects, and identity.",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 8765",
-    "serve": "npm run preview",
-    "build": "vite build && cp -R assets dist/assets && cp CNAME dist/CNAME",
+    "serve": "npm run build && npm run preview",
+    "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 8765"
   },
   "keywords": [
