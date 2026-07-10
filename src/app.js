@@ -1,4 +1,5 @@
-const data = window.JEFFREY_SITE_DATA;
+import "./styles.css";
+import { JEFFREY_SITE_DATA as data } from "./content.js";
 let currentLang = localStorage.getItem("jeffrey-site-lang") || "zh";
 let toastTimer;
 let activeProjectIndex = 0;

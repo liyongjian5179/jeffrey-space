@@ -7,7 +7,7 @@ This file helps future agents quickly understand and safely modify Jeffrey Space
 - Project name: `jeffrey-space`
 - Production domain: `hijeffrey.com`
 - Purpose: Jeffrey Li's canonical personal digital space for SRE, AI Infra, engineering beliefs, passion projects, writing, and contact.
-- Deployment target: static hosting, especially GitHub Pages.
+- Deployment target: static hosting, especially Cloudflare Pages and GitHub Pages.
 
 ## Start Here
 
@@ -20,11 +20,12 @@ Read these files first:
 
 ## Architecture
 
-This is a static site:
+This is a Vite-built static site:
 
-- `index.html`: page shell, sections, modals, analytics, script/style loading.
-- `src/content.js`: all major bilingual content.
-- `src/app.js`: rendering and interactions.
+- `index.html`: page shell, sections, modals, analytics, and Vite module entry.
+- `vite.config.js`: build output configuration.
+- `src/content.js`: all major bilingual content exported as an ES module.
+- `src/app.js`: rendering, interactions, and imports for content/styles.
 - `src/styles.css`: visual system and responsive layout.
 - `assets/images/`: production image assets.
 - `assets/docs/`: production document assets.
@@ -35,9 +36,11 @@ Prefer changing copy in `src/content.js` instead of editing `index.html`.
 ## Local Commands
 
 ```bash
+npm install
 npm run dev
 node --check src/app.js
 node --check src/content.js
+npm run build
 ```
 
 Preview URL:
@@ -81,12 +84,15 @@ After changes:
 
 - Run `node --check src/app.js`.
 - Run `node --check src/content.js`.
+- Run `npm run build` and confirm `dist/` contains `index.html`, `_assets/`, `assets/`, and `CNAME`.
 - Search for stale copy or old project names when renaming.
 - Check Chinese and English layouts.
 - For visual changes, review the breakpoints in `RESPONSIVE_CHECKLIST.md`.
 
-## GitHub Pages Notes
+## Hosting Notes
 
+- Cloudflare Pages build command: `npm run build`.
+- Cloudflare Pages output directory: `dist`.
 - `CNAME` contains `hijeffrey.com`.
 - If using a GitHub user site, the remote repository may be named `liyongjian5179.github.io`.
 - The project identity should remain `jeffrey-space`.

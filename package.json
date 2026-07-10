@@ -5,8 +5,10 @@
   "homepage": "https://hijeffrey.com",
   "description": "Jeffrey Li's personal digital space for SRE, AI Infra, writing, projects, and identity.",
   "scripts": {
-    "dev": "python3 -m http.server 8765",
-    "serve": "python3 -m http.server 8765"
+    "dev": "vite --host 127.0.0.1 --port 8765",
+    "serve": "npm run preview",
+    "build": "vite build && cp -R assets dist/assets && cp CNAME dist/CNAME",
+    "preview": "vite preview --host 127.0.0.1 --port 8765"
   },
   "keywords": [
     "jeffrey",
@@ -17,5 +19,9 @@
     "design-system"
   ],
   "author": "Jeffrey Li",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "type": "module",
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
 }

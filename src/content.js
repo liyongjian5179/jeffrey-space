@@ -1,4 +1,4 @@
-window.JEFFREY_SITE_DATA = {
+export const JEFFREY_SITE_DATA = {
   zh: {
     nav: [
       ["home", "首页"],

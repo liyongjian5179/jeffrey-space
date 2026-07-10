@@ -45,8 +45,21 @@ Keep `index.html` focused on structure, not content.
 ## Asset Model
 
 - Production-facing assets live in `assets/images/` and `assets/docs/`.
+- Vite production bundles are emitted to `dist/_assets`; the source `assets/` directory is copied to `dist/assets` after build so dynamic content paths keep working.
 - The live page should not depend on old production-site image or document URLs.
 - Historical source archives and migration scripts have been removed from the production project. Use `PROJECT_HISTORY.md` for context instead of carrying old assets forward.
+
+## Build And Deployment
+
+The project uses Vite for development and production builds.
+
+```text
+Cloudflare Pages build command: npm run build
+Cloudflare Pages output directory: dist
+Cloudflare Pages root directory: repository root
+```
+
+The build script runs `vite build`, then copies `assets/` and `CNAME` into `dist/`.
 
 ## Font Strategy
 
