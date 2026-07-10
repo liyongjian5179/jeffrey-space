@@ -25,6 +25,7 @@ This is a Vite-built static site:
 
 - `index.html`: page shell, sections, modals, analytics, and Vite module entry.
 - `vite.config.js`: build output configuration.
+- `wrangler.jsonc`: Cloudflare Workers Static Assets configuration for Cloudflare projects that require a Deploy command.
 - `src/content.js`: all major bilingual content exported as an ES module.
 - `src/app.js`: rendering, interactions, and imports for content/styles.
 - `src/styles.css`: visual system and responsive layout.
@@ -112,6 +113,8 @@ After changes:
 
 - Cloudflare Pages build command: `npm run build`.
 - Cloudflare Pages output directory: `dist`.
+- Cloudflare Pages deploy command should be empty; do not set `npx wrangler deploy` for the Pages static flow.
+- If Cloudflare requires a Deploy command, use `npm run deploy:cloudflare`; `wrangler.jsonc` must keep `assets.directory` pointed at `./dist`.
 - `CNAME` contains `hijeffrey.com`.
 - If using a GitHub user site, the remote repository may be named `liyongjian5179.github.io`.
 - The project identity should remain `jeffrey-space`.

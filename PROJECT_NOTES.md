@@ -75,9 +75,12 @@ The project uses Vite for development and production builds.
 Cloudflare Pages build command: npm run build
 Cloudflare Pages output directory: dist
 Cloudflare Pages root directory: repository root
+Cloudflare Pages deploy command: empty; do not use npx wrangler deploy
+Cloudflare Workers Static Assets deploy command: npm run deploy:cloudflare
 ```
 
 The build script runs `vite build`, then copies `assets/` and `CNAME` into `dist/`.
+`wrangler.jsonc` exists for Cloudflare projects that require a Deploy command. It points Wrangler at `./dist` so Wrangler does not fall back to framework autoconfig and try to parse `vite.config.js`.
 
 ## Font Strategy
 
