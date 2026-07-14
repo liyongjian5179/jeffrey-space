@@ -8,12 +8,15 @@ let consoleTimers = [];
 let navTicking = false;
 let lastQrTrigger = null;
 let lastProjectTrigger = null;
+const complianceDomains = ["liyongjian.top", "5179.top"];
+const localDebugHosts = ["localhost", "127.0.0.1", "0.0.0.0", "::1"];
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const get = (path) => path.split(".").reduce((obj, key) => obj && obj[key], data[currentLang]);
 
 function render() {
   document.documentElement.lang = currentLang === "zh" ? "zh-CN" : "en";
+  syncComplianceVisibility();
   $$("[data-i18n]").forEach((el) => { el.textContent = get(el.dataset.i18n) || ""; });
   $$("[data-i18n-html]").forEach((el) => { el.innerHTML = get(el.dataset.i18nHtml) || ""; });
   $$("[data-i18n], [data-i18n-html]").forEach((el) => { el.hidden = !el.textContent.trim(); });
@@ -44,7 +47,7 @@ function render() {
   animateHeroConsole();
 
   $("#aboutList").innerHTML = data[currentLang].about.items.map(([num, title, desc]) => `
-    <div class="manual-item">
+    <div class="manual-item reveal">
       <span class="manual-icon">${num}</span>
       <div><h3>${title}</h3><p>${desc}</p></div>
     </div>
@@ -71,7 +74,7 @@ function render() {
     </div>
     <div class="now-card-list">
       ${aboutNow.items.map(([label, desc]) => `
-        <div class="now-card-item">
+        <div class="now-card-item reveal">
           <b>${label}</b>
           <span>${desc}</span>
         </div>
@@ -169,6 +172,18 @@ function render() {
   requestNavigationStateUpdate();
 }
 
+function shouldShowCompliance(hostname = window.location.hostname) {
+  const host = hostname.toLowerCase();
+  if (localDebugHosts.includes(host)) return true;
+  return complianceDomains.some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+function syncComplianceVisibility() {
+  const compliance = $("[data-domain-compliance]");
+  if (!compliance) return;
+  compliance.hidden = !shouldShowCompliance();
+}
+
 function clearConsoleTimers() {
   consoleTimers.forEach((timer) => clearTimeout(timer));
   consoleTimers = [];
@@ -215,15 +230,24 @@ function initProjectTilt() {
   });
 }
 
-function renderContactAction([type, value, label]) {
+function renderContactAction([type, value, label], index) {
+  const actionType = type === "copy-email" ? "email" : type;
+  const icon = {
+    email: "@",
+    qr: "QR",
+    external: "↗",
+    file: "PDF"
+  }[actionType] || "→";
+  const actionClass = `btn contact-action contact-action-${actionType}${index === 0 ? " contact-action-primary" : ""}`;
+  const actionInner = `<span class="contact-action-icon" aria-hidden="true">${icon}</span><span>${label}</span>`;
   if (type === "copy-email") {
-    return `<button class="btn" type="button" data-copy-email="${value}">${label}</button>`;
+    return `<button class="${actionClass}" type="button" data-copy-email="${value}">${actionInner}</button>`;
   }
   if (type === "qr") {
-    return `<button class="btn" type="button" data-open-qr="${value}">${label}</button>`;
+    return `<button class="${actionClass}" type="button" data-open-qr="${value}">${actionInner}</button>`;
   }
   const externalAttrs = type === "external" ? " target=\"_blank\" rel=\"noreferrer\"" : "";
-  return `<a class="btn" href="${value}"${externalAttrs}>${label}</a>`;
+  return `<a class="${actionClass}" href="${value}"${externalAttrs}>${actionInner}</a>`;
 }
 
 async function copyText(text) {
@@ -286,10 +310,16 @@ function renderProjectModalImage() {
   if (!project) return;
   const images = getProjectImages(project);
   const image = images[activeProjectImageIndex] || images[0];
+  const gallery = $(".project-gallery");
+  gallery.classList.toggle("has-thumbs", images.length > 1);
   $("#projectModalImage").src = image;
   $("#projectModalImage").alt = `${project[0]} ${activeProjectImageIndex + 1}`;
-  $("#projectModalDots").innerHTML = images.map((_, index) => `
-    <button class="${index === activeProjectImageIndex ? "active" : ""}" type="button" data-project-dot="${index}" aria-label="Show image ${index + 1}" ${index === activeProjectImageIndex ? 'aria-current="true"' : ""}></button>
+  const dots = $("#projectModalDots");
+  dots.hidden = images.length < 2;
+  dots.innerHTML = images.map((thumb, index) => `
+    <button class="${index === activeProjectImageIndex ? "active" : ""}" type="button" data-project-dot="${index}" aria-label="Show image ${index + 1}" ${index === activeProjectImageIndex ? 'aria-current="true"' : ""}>
+      <img src="${thumb}" alt="" loading="lazy" decoding="async">
+    </button>
   `).join("");
   $$("[data-project-prev], [data-project-next]").forEach((btn) => {
     btn.hidden = images.length < 2;
@@ -427,16 +457,57 @@ function requestNavigationStateUpdate() {
   requestAnimationFrame(updateNavigationState);
 }
 
+const revealGroupSelectors = [
+  ".hero-grid",
+  ".about-grid",
+  ".manual-list",
+  ".now-card-list",
+  ".project-grid",
+  ".timeline",
+  ".skills-grid",
+  ".outputs-grid",
+  ".contact-panel"
+];
+
+function getRevealGroup(el) {
+  return revealGroupSelectors
+    .map((selector) => el.closest(selector))
+    .find(Boolean) || el.parentElement || document.body;
+}
+
+function prepareRevealStagger(items) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const groups = new Map();
+  items.forEach((el) => {
+    const group = getRevealGroup(el);
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(el);
+  });
+
+  groups.forEach((groupItems) => {
+    groupItems.forEach((el, index) => {
+      el.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 70}ms`);
+    });
+  });
+}
+
 function attachReveal() {
   const items = $$(".reveal:not(.visible)");
   if (!("IntersectionObserver" in window)) {
     items.forEach((el) => el.classList.add("visible"));
     return;
   }
+  prepareRevealStagger(items);
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
+        const delay = Number.parseFloat(getComputedStyle(entry.target).getPropertyValue("--reveal-delay")) || 0;
+        window.setTimeout(() => {
+          entry.target.classList.add("reveal-complete");
+          entry.target.style.removeProperty("--reveal-delay");
+        }, delay + 760);
         observer.unobserve(entry.target);
       }
     });

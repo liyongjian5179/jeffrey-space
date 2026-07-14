@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
 const staticAssetDirs = ["images", "docs"];
+const devAppPort = Number(process.env.JEFFREY_DEV_PORT || 8766);
+const isDevApp = process.env.JEFFREY_DEV_APP === "1";
 
 function copyStaticAssets() {
   return {
@@ -37,6 +39,20 @@ function copyStaticAssets() {
 
 export default defineConfig({
   plugins: [copyStaticAssets()],
+  server: isDevApp ? {
+    host: "127.0.0.1",
+    port: devAppPort,
+    strictPort: true,
+    hmr: {
+      protocol: "ws",
+      host: "127.0.0.1",
+      clientPort: devAppPort
+    },
+    watch: {
+      usePolling: true,
+      interval: 180
+    }
+  } : undefined,
   build: {
     rollupOptions: {
       output: {

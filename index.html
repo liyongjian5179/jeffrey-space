@@ -194,20 +194,24 @@
 
   <footer>
     <div class="container footer-grid">
-      <div>
-        <strong>Jeffrey · AI Infra × SRE × Agent</strong>
+      <div class="footer-signature">
+        <strong class="footer-signature-name">Jeffrey</strong>
+        <span class="footer-signature-role">AI Infra / SRE / Agent</span>
+        <span class="footer-signature-line">Build reliable systems, then make them easier to understand.</span>
         <div class="request-data">
           <span id="busuanzi_container_site_pv">PV <span id="busuanzi_value_site_pv">--</span></span>
           <span id="busuanzi_container_site_uv">UV <span id="busuanzi_value_site_uv">--</span></span>
         </div>
       </div>
       <div class="footer-links">
-        <span>© 2026 Site Reliability Engineer.</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">京ICP备19051297号</a>
-        <a class="beian-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=11011402054821" target="_blank" rel="noreferrer">
-          <img src="assets/images/beiantubiao.png" alt="" aria-hidden="true">
-          <span>京公网安备11011402054821号</span>
-        </a>
+        <span class="footer-copyright">© 2026 Site Reliability Engineer.</span>
+        <span class="footer-compliance" data-domain-compliance hidden>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">京ICP备19051297号</a>
+          <a class="beian-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=11011402054821" target="_blank" rel="noreferrer">
+            <img src="assets/images/beiantubiao.png" alt="" aria-hidden="true">
+            <span>京公网安备11011402054821号</span>
+          </a>
+        </span>
       </div>
     </div>
   </footer>
@@ -228,9 +232,11 @@
     <article class="project-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
       <button class="project-close" type="button" data-close-project aria-label="Close project details">×</button>
       <div class="project-gallery">
-        <img id="projectModalImage" src="" alt="">
-        <button class="gallery-btn gallery-prev" type="button" data-project-prev aria-label="Previous image">‹</button>
-        <button class="gallery-btn gallery-next" type="button" data-project-next aria-label="Next image">›</button>
+        <div class="project-image-frame">
+          <img id="projectModalImage" src="" alt="">
+          <button class="gallery-btn gallery-prev" type="button" data-project-prev aria-label="Previous image">‹</button>
+          <button class="gallery-btn gallery-next" type="button" data-project-next aria-label="Next image">›</button>
+        </div>
         <div class="gallery-dots" id="projectModalDots"></div>
       </div>
       <div class="project-detail">

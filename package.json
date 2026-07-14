@@ -6,6 +6,7 @@
   "description": "Jeffrey Li's personal digital space for SRE, AI Infra, writing, projects, and identity.",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 8765",
+    "dev:app": "JEFFREY_DEV_APP=1 JEFFREY_DEV_PORT=8766 vite --host 127.0.0.1 --port 8766 --strictPort --force --clearScreen false",
     "serve": "npm run build && npm run preview",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 8765",
