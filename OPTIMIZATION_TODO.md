@@ -158,7 +158,7 @@
 
 - [x] 试改为三种页眉家族：手册页眉、杂志式页眉、紧凑状态栏。
 - [x] About/Experience 保留工程编号主导的手册页眉。
-- [x] Passions 保留杂志式大标题，但 03 恢复到统一左侧编号轴；Beliefs 保持独立结构。
+- [x] Passions 按确认恢复修改前的标准左编号页眉，优先保证桌面端一屏节奏；Beliefs 保持独立结构。
 - [x] Skills/Writing 保留紧凑字号与分隔线，05/06 恢复统一左侧编号轴，标题与说明改为上下组合以稳定中英文节奏。
 - [x] 已检查中英文及 390px 移动端，无横向溢出。
 - [x] 已确认正式保留这版 Section Header。
@@ -177,9 +177,9 @@
 
 ### P1-08 调整桌面端 Section 高度与尾部留白 `M`
 
-- [x] 已重新评估 `#about/#projects/#experience/#skills/#outputs` 的统一 `min-height`，空白主要集中在高屏幕下的 Skills/Writing。
-- [x] 试改仅取消桌面端 Skills/Writing 的强制满屏高度，让内容按自然高度结束。
-- [x] Writing → Contact 继续由双方 Section padding 保留清晰章节停顿，不额外制造满屏空白。
+- [x] 已重新评估 `#about/#projects/#experience/#skills/#outputs` 的统一 `min-height`，按确认让 03/05/06 保持桌面端一屏章节节奏。
+- [x] Skills 恢复整屏高度，内容本身无需压缩；Writing 通过收紧说明条、卡片高度与内部留白适配一屏。
+- [x] Writing → Contact 保留清晰章节边界，不删除内容换取一屏。
 - [x] About、Beliefs、Passions 与 Experience 的高度策略保持不变，不压缩沉浸节奏。
 - [ ] 待你确认桌面端连续滚动节奏后，再正式保留这版高度调整。
 

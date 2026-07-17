@@ -928,10 +928,6 @@ h2 {
     padding: clamp(54px, 7vh, 82px) 0 clamp(34px, 4vh, 56px);
     display: block;
   }
-  #skills,
-  #outputs {
-    min-height: auto;
-  }
   #about > .container,
   #projects > .container,
   #experience > .container,
@@ -1743,18 +1739,8 @@ html[lang="en"] .belief-slide small {
   border-color: rgba(245, 58, 49, 0.22);
 }
 .timeline-logo--brand-red {
-  position: relative;
   background: white;
   border-color: rgba(245, 58, 49, 0.22);
-}
-.timeline-logo--brand-red::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  background: #f53a31;
-  -webkit-mask: var(--timeline-logo-mask) center / contain no-repeat;
-  mask: var(--timeline-logo-mask) center / contain no-repeat;
-  pointer-events: none;
 }
 .timeline-logo a {
   display: block;
@@ -1767,7 +1753,7 @@ html[lang="en"] .belief-slide small {
   object-fit: contain;
 }
 .timeline-logo--brand-red img {
-  opacity: 0;
+  filter: brightness(0) saturate(100%) invert(31%) sepia(88%) saturate(3382%) hue-rotate(345deg) brightness(101%) contrast(93%);
 }
 .timeline-runbook {
   display: grid;
@@ -1972,29 +1958,33 @@ html[lang="en"] .belief-slide small {
   }
   #outputs .output-note {
     display: grid;
-    grid-template-columns: 168px minmax(0, 1fr);
-    gap: 22px;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 18px;
     align-items: center;
     max-width: none;
-    margin-bottom: clamp(22px, 3.4vh, 34px);
-    padding: 26px 30px 24px;
+    margin-bottom: 16px;
+    padding: 18px 22px;
     transform: rotate(-0.25deg);
   }
   #outputs .output-note strong {
     margin: 0;
-    font-size: 1.18rem;
+    font-size: 1rem;
     line-height: 1;
   }
   #outputs .output-note p {
-    font-size: 0.96rem;
-    line-height: 1.82;
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
   #outputs .outputs-grid {
-    gap: 20px;
+    height: clamp(380px, calc(100svh - var(--nav-height) - 340px), 420px);
+    gap: 14px;
   }
   #outputs .output-card {
-    min-height: 276px;
-    padding: 32px;
+    min-height: 0;
+    padding: 22px 24px;
+  }
+  #outputs .output-card--secondary {
+    padding: 18px 22px;
   }
   #outputs .output-card::after {
     bottom: -20px;
@@ -2002,20 +1992,27 @@ html[lang="en"] .belief-slide small {
   }
   #outputs .output-status {
     padding: 3px 9px;
-    font-size: 0.68rem;
+    font-size: 0.64rem;
   }
   #outputs .output-card h3 {
-    margin: 22px 0 12px;
-    font-size: clamp(1.38rem, 2.2vw, 1.82rem);
+    margin: 12px 0 7px;
+    font-size: clamp(1.24rem, 1.8vw, 1.58rem);
   }
   #outputs .output-meta {
-    margin-bottom: 14px;
-    font-size: 0.82rem;
-    line-height: 1.65;
+    margin-bottom: 7px;
+    font-size: 0.74rem;
+    line-height: 1.4;
   }
   #outputs .output-card p:last-child {
-    font-size: 0.98rem;
-    line-height: 1.92;
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+  html[lang="en"] #outputs .section-head--compact h2 {
+    font-size: 1.85rem;
+    line-height: 1.08;
+  }
+  html[lang="en"] #outputs .outputs-grid {
+    height: clamp(364px, calc(100svh - var(--nav-height) - 356px), 404px);
   }
 }
 

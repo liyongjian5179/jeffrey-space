@@ -151,10 +151,9 @@ function render() {
       inverse: " timeline-logo--inverse",
       "brand-red": " timeline-logo--brand-red"
     }[logoVariant] || "";
-    const logoMaskStyle = logoVariant === "brand-red" ? ` style="--timeline-logo-mask: url('${logo}');"` : "";
     const labels = data[currentLang].experience.frameLabels;
     const logoMarkup = logo ? `
-      <div class="timeline-logo${logoVariantClass}"${logoMaskStyle}>
+      <div class="timeline-logo${logoVariantClass}">
         ${link && link !== "#" ? `<a href="${link}" target="_blank" rel="noreferrer" aria-label="${company}">` : ""}
           <img src="${logo}" alt="${company} logo" loading="lazy" decoding="async">
         ${link && link !== "#" ? "</a>" : ""}
