@@ -8,6 +8,12 @@ let consoleTimers = [];
 let navTicking = false;
 let lastQrTrigger = null;
 let lastProjectTrigger = null;
+let projectModalCloseTimer = null;
+let projectModalOpenFrame = null;
+let projectImageAnimation = null;
+let projectImageTransitionToken = 0;
+let navCloseTimer = null;
+let navOpenFrame = null;
 let navOpen = false;
 const complianceDomains = ["liyongjian.top", "5179.top"];
 const localDebugHosts = ["localhost", "127.0.0.1", "0.0.0.0", "::1"];
@@ -35,12 +41,44 @@ function setNavOpen(isOpen, { focus = true } = {}) {
   const toggle = $("[data-nav-toggle]");
   if (!nav || !navLinks || !scrim || !toggle) return;
 
+  window.clearTimeout(navCloseTimer);
+  navCloseTimer = null;
+  if (navOpenFrame !== null) {
+    cancelAnimationFrame(navOpenFrame);
+    navOpenFrame = null;
+  }
+
   navOpen = isOpen;
   nav.classList.toggle("nav-open", navOpen);
-  navLinks.classList.toggle("is-open", navOpen);
-  scrim.hidden = !navOpen;
   updateNavToggleLabel();
-  if (!navOpen && focus) toggle.focus({ preventScroll: true });
+
+  if (navOpen) {
+    navLinks.classList.add("is-mounted");
+    scrim.hidden = false;
+    navOpenFrame = requestAnimationFrame(() => {
+      navLinks.classList.add("is-open");
+      scrim.classList.add("is-open");
+      navOpenFrame = null;
+    });
+    return;
+  }
+
+  navLinks.classList.remove("is-open");
+  scrim.classList.remove("is-open");
+  if (focus) toggle.focus({ preventScroll: true });
+
+  const finishClose = () => {
+    navLinks.classList.remove("is-mounted");
+    scrim.hidden = true;
+    navCloseTimer = null;
+  };
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion || !navLinks.classList.contains("is-mounted")) {
+    finishClose();
+    return;
+  }
+  navCloseTimer = window.setTimeout(finishClose, 150);
 }
 
 function render() {
@@ -344,15 +382,10 @@ function getProjectImages(project) {
   return project[7] && project[7].length ? project[7] : [project[3]];
 }
 
-function renderProjectModalImage() {
-  const project = getProject();
-  if (!project) return;
-  const images = getProjectImages(project);
-  const image = images[activeProjectImageIndex] || images[0];
-  const gallery = $(".project-gallery");
-  gallery.classList.toggle("has-thumbs", images.length > 1);
-  $("#projectModalImage").src = image;
-  $("#projectModalImage").alt = `${project[0]} ${activeProjectImageIndex + 1}`;
+function applyProjectModalImage(project, images, image) {
+  const imageEl = $("#projectModalImage");
+  imageEl.src = image;
+  imageEl.alt = `${project[0]} ${activeProjectImageIndex + 1}`;
   const dots = $("#projectModalDots");
   dots.hidden = images.length < 2;
   dots.innerHTML = images.map((thumb, index) => `
@@ -360,9 +393,77 @@ function renderProjectModalImage() {
       <img src="${thumb}" alt="" loading="lazy" decoding="async">
     </button>
   `).join("");
-  $$("[data-project-prev], [data-project-next]").forEach((btn) => {
+  $$('[data-project-prev], [data-project-next]').forEach((btn) => {
     btn.hidden = images.length < 2;
   });
+}
+
+function renderProjectModalImage({ animate = false, direction = 0 } = {}) {
+  const project = getProject();
+  if (!project) return;
+  const images = getProjectImages(project);
+  const image = images[activeProjectImageIndex] || images[0];
+  const gallery = $(".project-gallery");
+  gallery.classList.toggle("has-thumbs", images.length > 1);
+  const imageEl = $("#projectModalImage");
+  const modal = $("#projectModal");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const shouldAnimate = animate && !modal.hidden && !reducedMotion && typeof imageEl.animate === "function";
+  const token = ++projectImageTransitionToken;
+
+  if (!shouldAnimate) {
+    if (projectImageAnimation) projectImageAnimation.cancel();
+    projectImageAnimation = null;
+    applyProjectModalImage(project, images, image);
+    return;
+  }
+
+  let transitionStarted = false;
+  const beginTransition = () => {
+    if (transitionStarted || token !== projectImageTransitionToken) return;
+    transitionStarted = true;
+    const computed = getComputedStyle(imageEl);
+    const currentOpacity = computed.opacity;
+    const currentTransform = computed.transform === "none" ? "translateX(0)" : computed.transform;
+    if (projectImageAnimation) projectImageAnimation.cancel();
+
+    const exitAnimation = imageEl.animate([
+      { opacity: currentOpacity, transform: currentTransform },
+      { opacity: 0, transform: `translateX(${-direction * 12}px)` }
+    ], {
+      duration: 90,
+      easing: "cubic-bezier(0.23, 1, 0.32, 1)",
+      fill: "forwards"
+    });
+    projectImageAnimation = exitAnimation;
+
+    exitAnimation.onfinish = () => {
+      if (token !== projectImageTransitionToken) {
+        exitAnimation.cancel();
+        return;
+      }
+      applyProjectModalImage(project, images, image);
+      const enterAnimation = imageEl.animate([
+        { opacity: 0, transform: `translateX(${direction * 12}px)` },
+        { opacity: 1, transform: "translateX(0)" }
+      ], {
+        duration: 160,
+        easing: "cubic-bezier(0.23, 1, 0.32, 1)",
+        fill: "both"
+      });
+      projectImageAnimation = enterAnimation;
+      enterAnimation.onfinish = () => {
+        enterAnimation.cancel();
+        if (projectImageAnimation === enterAnimation) projectImageAnimation = null;
+      };
+    };
+  };
+
+  const preloader = new Image();
+  preloader.onload = beginTransition;
+  preloader.onerror = beginTransition;
+  preloader.src = image;
+  if (preloader.complete) beginTransition();
 }
 
 function getFocusableElements(root) {
@@ -395,6 +496,8 @@ function trapModalFocus(event, modal) {
 function openProjectModal(index, trigger = document.activeElement) {
   const project = getProject(index);
   if (!project) return;
+  window.clearTimeout(projectModalCloseTimer);
+  if (projectModalOpenFrame !== null) cancelAnimationFrame(projectModalOpenFrame);
   lastProjectTrigger = trigger;
   activeProjectIndex = index;
   activeProjectImageIndex = 0;
@@ -408,18 +511,42 @@ function openProjectModal(index, trigger = document.activeElement) {
   `;
   $("#projectModalTags").innerHTML = tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
   renderProjectModalImage();
-  $("#projectModal").hidden = false;
+  const modal = $("#projectModal");
+  modal.classList.remove("is-open");
+  modal.hidden = false;
   document.body.classList.add("modal-open");
+  projectModalOpenFrame = requestAnimationFrame(() => {
+    modal.classList.add("is-open");
+    projectModalOpenFrame = null;
+  });
   $(".project-close").focus();
 }
 
 function closeProjectModal(restore = true) {
   const modal = $("#projectModal");
   if (modal.hidden) return;
-  modal.hidden = true;
-  document.body.classList.remove("modal-open");
-  if (restore) restoreFocus(lastProjectTrigger);
-  lastProjectTrigger = null;
+  projectImageTransitionToken += 1;
+  if (projectImageAnimation) projectImageAnimation.cancel();
+  projectImageAnimation = null;
+  if (projectModalOpenFrame !== null) {
+    cancelAnimationFrame(projectModalOpenFrame);
+    projectModalOpenFrame = null;
+  }
+  modal.classList.remove("is-open");
+
+  const finishClose = () => {
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+    if (restore) restoreFocus(lastProjectTrigger);
+    lastProjectTrigger = null;
+    projectModalCloseTimer = null;
+  };
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    finishClose();
+    return;
+  }
+  projectModalCloseTimer = window.setTimeout(finishClose, 170);
 }
 
 function shiftProjectImage(delta) {
@@ -427,7 +554,7 @@ function shiftProjectImage(delta) {
   if (!project) return;
   const images = getProjectImages(project);
   activeProjectImageIndex = (activeProjectImageIndex + delta + images.length) % images.length;
-  renderProjectModalImage();
+  renderProjectModalImage({ animate: true, direction: Math.sign(delta) });
 }
 
 function scrollToSection(id, updateHash = true) {
@@ -604,8 +731,10 @@ document.addEventListener("click", async (event) => {
 
   const dot = event.target.closest("[data-project-dot]");
   if (dot) {
-    activeProjectImageIndex = Number(dot.dataset.projectDot);
-    renderProjectModalImage();
+    const nextIndex = Number(dot.dataset.projectDot);
+    if (nextIndex === activeProjectImageIndex) return;
+    activeProjectImageIndex = nextIndex;
+    renderProjectModalImage({ animate: true });
     return;
   }
 
