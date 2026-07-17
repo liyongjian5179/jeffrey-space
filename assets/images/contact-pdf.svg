@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">PDF document</title>
+  <path fill="#E84A5F" d="M5 2h9l5 5v15H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/>
+  <path fill="#fffef8" d="M14 2v6h6z" opacity=".78"/>
+  <path fill="none" stroke="#fffef8" stroke-linecap="round" stroke-width="1.7" d="M7 13h8M7 16h8M7 19h5"/>
+</svg>

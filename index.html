@@ -44,14 +44,18 @@
         <span>/</span>
         <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
       </div>
+      <button class="nav-menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">
+        <span class="nav-menu-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span data-nav-toggle-label>菜单</span>
+      </button>
+    </div>
+    <div class="lang mobile-lang" aria-label="Mobile language switch">
+      <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
+      <span>/</span>
+      <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
     </div>
   </nav>
-
-  <div class="lang mobile-lang" aria-label="Mobile language switch">
-    <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
-    <span>/</span>
-    <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
-  </div>
+  <div class="nav-scrim" data-nav-scrim hidden></div>
 
   <main>
     <section class="hero" id="home">
@@ -78,7 +82,7 @@
 
     <section class="section" id="about">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section-head section-head--manual reveal">
           <div>
             <span class="section-num">01</span>
             <span class="section-kicker">SYSTEM_DEVELOPER_MANIFESTO</span>
@@ -113,7 +117,7 @@
 
     <section class="section" id="projects">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section-head section-head--magazine reveal">
           <div>
             <span class="section-num">03</span>
             <span class="section-kicker">PASSIONS_AS_SYSTEM_INPUTS</span>
@@ -129,7 +133,7 @@
 
     <section class="section" id="experience">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section-head section-head--manual reveal">
           <div>
             <span class="section-num">04</span>
             <span class="section-kicker">RELIABILITY_RUNBOOK</span>
@@ -145,7 +149,7 @@
 
     <section class="section" id="skills">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section-head section-head--compact reveal">
           <div>
             <span class="section-num">05</span>
             <span class="section-kicker">WHAT_I_CAN_BUILD</span>
@@ -161,7 +165,7 @@
 
     <section class="section" id="outputs">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section-head section-head--compact reveal">
           <div>
             <span class="section-num">06</span>
             <span class="section-kicker">PUBLIC_OUTPUTS</span>

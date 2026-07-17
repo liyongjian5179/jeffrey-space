@@ -17,13 +17,12 @@ export const JEFFREY_SITE_DATA = {
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agent × 架构效率工具",
       actions: [
-        ["projects", "查看热爱", "btn-primary"],
-        ["experience", "浏览经历", "btn-secondary"],
-        ["contact", "联系我", "btn-ghost"]
+        ["experience", "浏览经历", "btn-primary"],
+        ["contact", "联系我", "btn-secondary"]
       ],
       status: [
         ["10+ Y", "工程经验"],
-        ["99.99", "稳定性追求"],
+        ["99.99%", "稳定性追求"],
         ["AI × SRE", "当前方向"]
       ],
       console: {
@@ -99,8 +98,8 @@ export const JEFFREY_SITE_DATA = {
       frameLabels: ["场景", "动作", "结果"],
       companies: [
         ["assets/images/xiaomi-logo.png", "https://www.mi.com/"],
-        ["https://ui-avatars.com/api/?name=9F&background=random&color=fff&rounded=true&font-size=0.33&length=6&size=200", "https://www.9fgroup.com/"],
-        ["https://ui-avatars.com/api/?name=3658&background=random&color=fff&rounded=true&font-size=0.33&length=6&size=200", "#"],
+        ["assets/images/9f-logo.png", "https://www.9fgroup.com/", "brand-red"],
+        ["assets/images/3658-logo.png", "#"],
         ["assets/images/percent-logo.png", "https://www.percent.cn/"],
         ["assets/images/ysu-logo.png", "https://www.ysu.edu.cn/"]
       ],
@@ -128,8 +127,8 @@ export const JEFFREY_SITE_DATA = {
       noteTitle: "VISUAL SYSTEM",
       note: "站点首屏和头像使用 Jeffrey 个人形象；文章正文配图使用“小黑”系统：16:9 白底手绘、黑色小角色参与核心动作，少量红橙蓝中文批注。",
       items: [
-        ["SRE Runbook", "稳定性、容量、重保、复盘", "把线上保障经验拆成可执行清单和可复盘模板。", "公众号 / 文章"],
-        ["AI Infra Notes", "Agent、工作流、可观察性", "记录 AI 工程化从 demo 到可用工具之间的真实问题。", "GitHub / Notes"],
+        ["SRE Runbook", "稳定性、容量、重保、复盘", "把线上保障经验拆成可执行清单和可复盘模板。", "精选整理中"],
+        ["AI Infra Notes", "Agent、工作流、可观察性", "记录 AI 工程化从 demo 到可用工具之间的真实问题。", "计划发布"],
         ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容、视觉和自动化逐步做成一个长期系统。", "持续建设中"]
       ]
     },
@@ -165,13 +164,12 @@ export const JEFFREY_SITE_DATA = {
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agents × architecture-efficiency tools",
       actions: [
-        ["projects", "View passions", "btn-primary"],
-        ["experience", "Explore experience", "btn-secondary"],
-        ["contact", "Contact me", "btn-ghost"]
+        ["experience", "Explore experience", "btn-primary"],
+        ["contact", "Contact me", "btn-secondary"]
       ],
       status: [
         ["10+ Y", "Experience"],
-        ["99.99", "Reliability goal"],
+        ["99.99%", "Reliability goal"],
         ["AI × SRE", "Current focus"]
       ],
       console: {
@@ -247,8 +245,8 @@ export const JEFFREY_SITE_DATA = {
       frameLabels: ["Context", "Action", "Result"],
       companies: [
         ["assets/images/xiaomi-logo.png", "https://www.mi.com/"],
-        ["https://ui-avatars.com/api/?name=9F&background=random&color=fff&rounded=true&font-size=0.33&length=6&size=200", "https://www.9fgroup.com/"],
-        ["https://ui-avatars.com/api/?name=3658&background=random&color=fff&rounded=true&font-size=0.33&length=6&size=200", "#"],
+        ["assets/images/9f-logo.png", "https://www.9fgroup.com/", "brand-red"],
+        ["assets/images/3658-logo.png", "#"],
         ["assets/images/percent-logo.png", "https://www.percent.cn/"],
         ["assets/images/ysu-logo.png", "https://www.ysu.edu.cn/"]
       ],
@@ -276,8 +274,8 @@ export const JEFFREY_SITE_DATA = {
       noteTitle: "VISUAL SYSTEM",
       note: "The site hero and avatar use Jeffrey's personal IP. Article illustrations use the Xiaohei system: 16:9 white-background hand-drawn images, a small black character doing the core action, and sparse red/orange/blue Chinese annotations.",
       items: [
-        ["SRE Runbook", "Reliability, capacity, assurance, review", "Executable checklists and review templates from production experience.", "WeChat / Articles"],
-        ["AI Infra Notes", "Agents, workflows, observability", "Real problems between AI demos and usable engineering tools.", "GitHub / Notes"],
+        ["SRE Runbook", "Reliability, capacity, assurance, review", "Executable checklists and review templates from production experience.", "Featured draft"],
+        ["AI Infra Notes", "Agents, workflows, observability", "Real problems between AI demos and usable engineering tools.", "Planned"],
         ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content, visuals and automation into a long-term system.", "In progress"]
       ]
     },

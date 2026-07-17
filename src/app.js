@@ -8,11 +8,40 @@ let consoleTimers = [];
 let navTicking = false;
 let lastQrTrigger = null;
 let lastProjectTrigger = null;
+let navOpen = false;
 const complianceDomains = ["liyongjian.top", "5179.top"];
 const localDebugHosts = ["localhost", "127.0.0.1", "0.0.0.0", "::1"];
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const get = (path) => path.split(".").reduce((obj, key) => obj && obj[key], data[currentLang]);
+
+function updateNavToggleLabel() {
+  const toggle = $("[data-nav-toggle]");
+  if (!toggle) return;
+  const labels = currentLang === "zh"
+    ? { open: "关闭菜单", closed: "菜单" }
+    : { open: "Close menu", closed: "Menu" };
+  const label = navOpen ? labels.open : labels.closed;
+  toggle.setAttribute("aria-label", label);
+  toggle.setAttribute("aria-expanded", String(navOpen));
+  const labelNode = $("[data-nav-toggle-label]", toggle);
+  if (labelNode) labelNode.textContent = label;
+}
+
+function setNavOpen(isOpen, { focus = true } = {}) {
+  const nav = $(".nav");
+  const navLinks = $("#navLinks");
+  const scrim = $("[data-nav-scrim]");
+  const toggle = $("[data-nav-toggle]");
+  if (!nav || !navLinks || !scrim || !toggle) return;
+
+  navOpen = isOpen;
+  nav.classList.toggle("nav-open", navOpen);
+  navLinks.classList.toggle("is-open", navOpen);
+  scrim.hidden = !navOpen;
+  updateNavToggleLabel();
+  if (!navOpen && focus) toggle.focus({ preventScroll: true });
+}
 
 function render() {
   document.documentElement.lang = currentLang === "zh" ? "zh-CN" : "en";
@@ -27,6 +56,7 @@ function render() {
   });
 
   $("#navLinks").innerHTML = data[currentLang].nav.map(([id, label]) => `<a href="#${id}" data-nav-link="${id}">${label}</a>`).join("");
+  setNavOpen(false, { focus: false });
   $("#heroActions").innerHTML = data[currentLang].hero.actions.map(([id, label, klass]) => `<a class="btn ${klass}" href="#${id}">${label}</a>`).join("");
   $("#statusStrip").innerHTML = data[currentLang].hero.status.map(([value, label]) => `<div class="status-card"><b>${value}</b><span>${label}</span></div>`).join("");
   $("#heroConsole").innerHTML = `
@@ -116,10 +146,15 @@ function render() {
     `;
   }).join("");
   $("#timeline").innerHTML = data[currentLang].experience.items.map(([date, title, company, desc, points], index) => {
-    const [logo, link] = data[currentLang].experience.companies[index] || [];
+    const [logo, link, logoVariant] = data[currentLang].experience.companies[index] || [];
+    const logoVariantClass = {
+      inverse: " timeline-logo--inverse",
+      "brand-red": " timeline-logo--brand-red"
+    }[logoVariant] || "";
+    const logoMaskStyle = logoVariant === "brand-red" ? ` style="--timeline-logo-mask: url('${logo}');"` : "";
     const labels = data[currentLang].experience.frameLabels;
     const logoMarkup = logo ? `
-      <div class="timeline-logo">
+      <div class="timeline-logo${logoVariantClass}"${logoMaskStyle}>
         ${link && link !== "#" ? `<a href="${link}" target="_blank" rel="noreferrer" aria-label="${company}">` : ""}
           <img src="${logo}" alt="${company} logo" loading="lazy" decoding="async">
         ${link && link !== "#" ? "</a>" : ""}
@@ -127,8 +162,10 @@ function render() {
     ` : "";
 
     return `
-    <article class="timeline-card reveal">
-      <div class="timeline-date">${date}</div>
+    <article class="timeline-card ${index === 0 ? "timeline-card--current" : ""} reveal">
+      <aside class="timeline-meta">
+        <div class="timeline-date">${date}</div>
+      </aside>
       <div class="timeline-content">
         <div class="timeline-company-row">
           ${logoMarkup}
@@ -158,7 +195,7 @@ function render() {
     </article>
   `).join("");
   $("#outputsGrid").innerHTML = data[currentLang].outputs.items.map(([title, meta, desc, status], index) => `
-    <article class="output-card reveal" data-index="${String(index + 1).padStart(2, "0")}">
+    <article class="output-card ${index === 0 ? "output-card--featured" : "output-card--secondary"} reveal" data-index="${String(index + 1).padStart(2, "0")}">
       <span class="output-status">${status}</span>
       <h3>${title}</h3>
       <p class="output-meta">${meta}</p>
@@ -232,14 +269,17 @@ function initProjectTilt() {
 
 function renderContactAction([type, value, label], index) {
   const actionType = type === "copy-email" ? "email" : type;
-  const icon = {
-    email: "@",
-    qr: "QR",
-    external: "↗",
-    file: "PDF"
-  }[actionType] || "→";
+  const icon = type === "copy-email"
+    ? "assets/images/contact-email.svg"
+    : type === "qr"
+      ? "assets/images/contact-wechat.svg"
+      : type === "file"
+        ? "assets/images/contact-pdf.svg"
+        : value.includes("github.com")
+          ? "assets/images/contact-github.svg"
+          : "assets/images/contact-xiaohongshu.svg";
   const actionClass = `btn contact-action contact-action-${actionType}${index === 0 ? " contact-action-primary" : ""}`;
-  const actionInner = `<span class="contact-action-icon" aria-hidden="true">${icon}</span><span>${label}</span>`;
+  const actionInner = `<span class="contact-action-icon" aria-hidden="true"><img src="${icon}" alt=""></span><span>${label}</span>`;
   if (type === "copy-email") {
     return `<button class="${actionClass}" type="button" data-copy-email="${value}">${actionInner}</button>`;
   }
@@ -523,11 +563,20 @@ $$(".lang button").forEach((btn) => {
   });
 });
 
+$("[data-nav-toggle]").addEventListener("click", () => {
+  setNavOpen(!navOpen);
+});
+
+$("[data-nav-scrim]").addEventListener("click", () => {
+  setNavOpen(false);
+});
+
 document.addEventListener("click", async (event) => {
   const internalLink = event.target.closest('a[href^="#"]');
   if (internalLink) {
     const id = decodeURIComponent(internalLink.getAttribute("href").slice(1));
     if (id && scrollToSection(id)) {
+      setNavOpen(false, { focus: false });
       event.preventDefault();
       return;
     }
@@ -588,6 +637,12 @@ document.addEventListener("keydown", (event) => {
   const qrModal = $("#qrModal");
   const projectModal = $("#projectModal");
 
+  if (event.key === "Escape" && navOpen) {
+    event.preventDefault();
+    setNavOpen(false);
+    return;
+  }
+
   trapModalFocus(event, qrModal);
   trapModalFocus(event, projectModal);
 
@@ -607,7 +662,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("scroll", requestNavigationStateUpdate, { passive: true });
-window.addEventListener("resize", requestNavigationStateUpdate);
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 980 && navOpen) setNavOpen(false, { focus: false });
+  requestNavigationStateUpdate();
+});
 window.addEventListener("hashchange", () => {
   scrollToCurrentHash();
   requestNavigationStateUpdate();
