@@ -629,7 +629,7 @@ h2 {
   font-size: 1.05rem;
   font-weight: 900;
 }
-.manual-item p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.manual-item p { margin: 0; color: var(--muted); font-size: 0.92rem; text-wrap: pretty; }
 .about-side {
   display: grid;
   gap: 14px;
@@ -782,7 +782,7 @@ h2 {
   min-width: 0;
   padding: clamp(10px, 2vw, 20px) clamp(6px, 2vw, 18px);
 }
-.profile-photo-card figcaption span {
+.profile-photo-card figcaption > span {
   width: fit-content;
   margin-bottom: 12px;
   padding: 4px 10px;
@@ -935,8 +935,8 @@ h2 {
   #experience,
   #skills,
   #outputs {
-    min-height: calc(100svh - var(--nav-height));
-    padding: clamp(54px, 7vh, 82px) 0 clamp(34px, 4vh, 56px);
+    min-height: 0;
+    padding: clamp(64px, 8vh, 96px) 0 clamp(56px, 7vh, 88px);
     display: block;
   }
   #about > .container,
@@ -978,7 +978,8 @@ h2 {
   #skills h2,
   #outputs h2 {
     font-size: clamp(2rem, 3.4vw, 2.85rem);
-    line-height: 1.12;
+    line-height: 1.14;
+    text-wrap: balance;
   }
   #about .section-desc,
   #projects .section-desc,
@@ -1089,7 +1090,7 @@ h2 {
   #about .about-grid {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     gap: clamp(22px, 3vw, 42px);
-    min-height: clamp(540px, calc(100svh - 340px), 660px);
+    min-height: 0;
     align-items: stretch;
   }
   #about .manual-card {
@@ -1104,6 +1105,8 @@ h2 {
     font-size: 0.64rem;
   }
   #about .manual-list {
+    flex: 1;
+    align-content: space-between;
     gap: clamp(15px, 1.75vw, 22px);
     margin-bottom: 24px;
   }
@@ -1152,7 +1155,7 @@ h2 {
   #about .profile-photo-card figcaption {
     padding: 10px 10px 10px 16px;
   }
-  #about .profile-photo-card figcaption span {
+  #about .profile-photo-card figcaption > span {
     margin-bottom: 9px;
     font-size: 0.68rem;
   }
@@ -1328,20 +1331,18 @@ h2 {
 }
 
 .beliefs-section {
-  padding: 0;
+  padding: clamp(72px, 9vw, 104px) 0 0;
   border-top: 1px solid var(--line);
   background: var(--cream);
   overflow: visible;
   position: relative;
 }
 .beliefs-head {
-  position: absolute;
-  top: clamp(92px, 10vw, 132px);
-  left: max(20px, calc((100vw - 1180px) / 2 + 20px));
-  right: 20px;
+  position: relative;
   z-index: 2;
   max-width: 760px;
-  margin-bottom: 0;
+  margin: 0 0 clamp(36px, 4.5vw, 56px);
+  padding-left: 20px;
   pointer-events: none;
 }
 .belief-slides {
@@ -1352,8 +1353,9 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100svh - var(--nav-height));
-  padding: clamp(180px, 18vw, 240px) max(20px, calc((100vw - 1180px) / 2 + 20px)) clamp(72px, 10vw, 118px);
+  min-height: 340px;
+  padding: clamp(72px, 7vw, 96px) max(20px, calc((100vw - 1180px) / 2 + 20px)) clamp(72px, 7vw, 92px);
+  overflow: hidden;
 }
 .belief-slide-1 {
   background: var(--yellow);
@@ -1369,25 +1371,28 @@ h2 {
 }
 .belief-number {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  right: max(20px, calc((100vw - 1180px) / 2 + 20px));
+  bottom: clamp(40px, 4.6vw, 72px);
   font-family: var(--font-display);
-  font-size: clamp(8rem, 23vw, 20rem);
+  font-size: clamp(4.5rem, 11vw, 9rem);
   font-weight: 900;
-  line-height: 1;
-  opacity: 0.09;
-  transform: translate(-50%, -50%);
+  line-height: 0.9;
+  opacity: 0.1;
   pointer-events: none;
 }
 .belief-slide p {
-  max-width: 940px;
+  max-width: 880px;
   margin: 0;
   font-family: var(--font-serif-zh);
-  font-size: clamp(2rem, 5.2vw, 4.8rem);
+  font-size: clamp(1.85rem, 4vw, 3.7rem);
   font-weight: 900;
-  line-height: 1.18;
+  line-height: 1.24;
+  text-wrap: pretty;
   position: relative;
   z-index: 1;
+}
+.nb {
+  white-space: nowrap;
 }
 .belief-slide small {
   width: fit-content;
@@ -1410,13 +1415,15 @@ html[lang="en"] .beliefs-head {
 html[lang="en"] .beliefs-head h2 {
   max-width: 780px;
   font-size: clamp(1.85rem, 3.5vw, 2.85rem);
+  text-wrap: balance;
 }
 html[lang="en"] .belief-slide p {
-  max-width: 1040px;
+  max-width: 960px;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.45vw, 4.1rem);
-  line-height: 1.08;
+  font-size: clamp(1.9rem, 3.5vw, 3.15rem);
+  line-height: 1.14;
   overflow-wrap: normal;
+  text-wrap: pretty;
 }
 html[lang="en"] .belief-slide small {
   margin-top: 24px;
@@ -1809,7 +1816,7 @@ html[lang="en"] .belief-slide small {
   content: attr(data-index);
   position: absolute;
   right: 16px;
-  top: -10px;
+  top: 14px;
   font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 900;
@@ -1851,12 +1858,12 @@ html[lang="en"] .belief-slide small {
   position: relative;
   z-index: 1;
 }
-.skill-card p { margin: 0; color: var(--muted); position: relative; z-index: 1; }
+.skill-card p { margin: 0; color: var(--muted); position: relative; z-index: 1; text-wrap: pretty; }
 
 .outputs-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto;
   gap: 16px;
   margin: 0;
   padding: 0;
@@ -1865,19 +1872,26 @@ html[lang="en"] .belief-slide small {
   max-width: 860px;
   margin: 0 0 clamp(24px, 4vw, 40px);
 }
+.output-note p {
+  white-space: pre-line;
+}
 .output-card {
   padding: clamp(24px, 3vw, 34px);
   position: relative;
   overflow: hidden;
-  min-height: 260px;
+  min-height: 0;
 }
 .output-card--featured {
-  grid-row: 1 / span 2;
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
+.output-card--featured p:last-child {
+  margin-top: 14px;
+  max-width: 34em;
+}
+
 .output-card--secondary {
   min-height: 0;
   padding: clamp(20px, 2.4vw, 28px);
@@ -1892,11 +1906,11 @@ html[lang="en"] .belief-slide small {
 .output-card::after {
   content: attr(data-index);
   position: absolute;
-  right: 18px;
-  bottom: -24px;
+  right: 14px;
+  top: 18px;
   color: rgba(43, 127, 216, 0.07);
   font-family: var(--font-display);
-  font-size: 6rem;
+  font-size: 3.2rem;
   font-weight: 900;
   line-height: 1;
   pointer-events: none;
@@ -1940,6 +1954,7 @@ html[lang="en"] .belief-slide small {
   z-index: 1;
 }
 .output-card p:last-child {
+  text-wrap: pretty;
   margin: 0;
   color: var(--muted);
   line-height: 1.8;
@@ -1987,9 +2002,9 @@ html[lang="en"] .belief-slide small {
   display: block;
 }
 .article-group + .article-group .article-group-head {
-  margin-top: 6px;
+  margin-top: 26px;
   border-top: 1px solid var(--line);
-  padding-top: 22px;
+  padding-top: 28px;
 }
 .article-group-head {
   display: flex;
@@ -2035,9 +2050,9 @@ html[lang="en"] .belief-slide small {
 }
 .article-item {
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   align-items: baseline;
-  gap: 4px 18px;
+  gap: 4px 14px;
   padding: 17px 0;
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -2198,19 +2213,19 @@ html[lang="en"] .belief-slide small {
     line-height: 1.55;
   }
   #outputs .outputs-grid {
-    height: clamp(380px, calc(100svh - var(--nav-height) - 340px), 420px);
+    height: auto;
     gap: 14px;
   }
   #outputs .output-card {
-    min-height: 0;
+    min-height: 172px;
     padding: 22px 24px;
   }
   #outputs .output-card--secondary {
     padding: 18px 22px;
   }
   #outputs .output-card::after {
-    bottom: -20px;
-    font-size: 5rem;
+    top: 16px;
+    font-size: 2.7rem;
   }
   #outputs .output-status {
     padding: 3px 9px;
@@ -2234,7 +2249,7 @@ html[lang="en"] .belief-slide small {
     line-height: 1.08;
   }
   html[lang="en"] #outputs .outputs-grid {
-    height: clamp(364px, calc(100svh - var(--nav-height) - 356px), 404px);
+    height: auto;
   }
 }
 
@@ -3088,21 +3103,31 @@ footer {
     align-self: stretch;
   }
   .belief-slide {
-    min-height: calc(100svh - var(--nav-height));
-    padding: 178px 20px 58px;
+    min-height: 0;
+    padding: 72px 20px 56px;
   }
   .beliefs-head {
-    top: 92px;
-    left: 20px;
+    padding-left: 0;
+    margin-bottom: 32px;
+  }
+  #about h2 br {
+    display: none;
   }
   .beliefs-head h2 {
     max-width: 320px;
   }
   .belief-slide p {
-    font-size: clamp(2rem, 12vw, 3rem);
+    font-size: clamp(1.7rem, 10.2vw, 2.5rem);
+  }
+  .belief-number {
+    top: 14px;
+    right: 14px;
+    bottom: auto;
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
+    opacity: 0.1;
   }
   html[lang="en"] .belief-slide {
-    padding-top: 216px;
+    padding-top: 72px;
   }
   html[lang="en"] .beliefs-head h2 {
     max-width: 340px;

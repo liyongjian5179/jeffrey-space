@@ -40,7 +40,7 @@ export const JEFFREY_SITE_DATA = {
       detailLabel: "查看详情"
     },
     about: {
-      title: "一个把稳定性、效率和人味放在一起的工程师",
+      title: "一个把稳定性、效率和<span class=\"nb\">人味</span><br>放在一起的工程师",
       subtitle: "我喜欢把复杂系统拆成可观察、可执行、可复盘的结构。技术不是炫技，而是让团队少踩坑、让系统更可靠。",
       noteTitle: "KEY INSIGHT",
       note: "真正可靠的系统，不只靠监控大屏，而靠清晰边界、可执行 runbook 和持续复盘。",
@@ -49,7 +49,7 @@ export const JEFFREY_SITE_DATA = {
         label: "REAL PERSON",
         title: "Jeffrey Li",
         stickers: ["Jeffrey", "AI Infra", "SRE"],
-        description: "真实的我在这里：长期和复杂系统、稳定性与效率工具打交道，也持续把工程经验整理成可复用的系统笔记。"
+        description: "真实的我在这里：长期和复杂系统、稳定性与效率工具打交道，也持续把工程经验整理成<span class=\"nb\">可复用的系统笔记</span>。"
       },
       now: {
         label: "NOW BUILDING",
@@ -61,10 +61,10 @@ export const JEFFREY_SITE_DATA = {
         ]
       },
       items: [
-        ["01", "稳定性建设", "重保、容量、风险盘点、高可用演练，把复杂链路变成可验证机制。"],
-        ["02", "架构效率工具", "从重复操作里抽出平台能力，把人工经验沉淀成按钮、API 和流程。"],
-        ["03", "AI Infra / Agent", "关注 AI 工程化、工作流可观察性和面向个人/团队的效率工具。"],
-        ["04", "知识分享", "用文章、插图和工具，把工程经验讲得更清楚、更容易被复用。"]
+        ["01", "稳定性建设", "重保、容量、风险盘点、高可用演练，<span class=\"nb\">把复杂链路变成可验证机制</span>。"],
+        ["02", "架构效率工具", "把重复操作收成平台能力：按钮、API 和流程。"],
+        ["03", "AI Infra / Agent", "关注 AI 工程化、工作流可观察性和团队内部的效率工具。"],
+        ["04", "知识分享", "用文章、插图和工具，把工程经验讲清楚，方便别人复用。"]
       ],
       metrics: [
         ["10+", "Years"],
@@ -77,9 +77,9 @@ export const JEFFREY_SITE_DATA = {
       title: "几条我相信的工程判断",
       subtitle: "",
       items: [
-        ["01", "可靠性不是把事故变少，而是让团队更会处理不确定性。", "Reliability as a team habit"],
-        ["02", "AI 工具真正有价值的地方，是让人的判断更容易落到行动里。", "Judgment into action"],
-        ["03", "好的平台不是让人消失，而是把人从重复消耗里释放出来。", "Automation should create room"]
+        ["01", "可靠性不是把事故变少，而是让<span class=\"nb\">团队</span>更会处理不确定性。", "Reliability as a team habit"],
+        ["02", "AI 工具真正有价值的地方，是让<span class=\"nb\">人的判断</span>更容易落到行动里。", "Judgment into action"],
+        ["03", "好的平台不是让人消失，而是把人从<span class=\"nb\">重复消耗</span>里释放出来。", "Automation should create room"]
       ]
     },
     projects: {
@@ -123,13 +123,13 @@ export const JEFFREY_SITE_DATA = {
     },
     outputs: {
       title: "把经验写成可以被复用的系统笔记",
-      subtitle: "我会持续把 SRE、AI Infra、自动化和个人 IP 工具化的实践整理成文章、图解和小工具。",
+      subtitle: "这些是我自己踩过的，数字和代价都写在文中。",
       noteTitle: "VISUAL SYSTEM",
-      note: "站点与头像沿用 Jeffrey 设计系统：奶油底、工程蓝、暖黄批注。文章正文配图用 Jeffrey & Byte 插画系统：16:9 横版手绘，Jeffrey 和他的 AI 小助手 Byte 承担核心动作，蓝黄配色，只留少量中文标注。",
+      note: "站点与头像沿用 Jeffrey 设计系统：奶油底、工程蓝、暖黄批注。\n文章正文配图用 Jeffrey & Byte 插画系统：16:9 手绘，Jeffrey 和小助手 Byte 承担核心动作，只留少量中文标注。",
       items: [
         ["SRE Runbook", "稳定性、容量、重保、复盘", "把线上保障经验拆成可执行清单和可复盘模板。", "精选整理中"],
         ["AI Infra Notes", "Agent、工作流、可观察性", "记录 AI 工程化从 demo 到可用工具之间的真实问题。", "计划发布"],
-        ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容、视觉和自动化逐步做成一个长期系统。", "持续建设中"]
+        ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容和自动化，做成一套长期系统。", "持续建设中"]
       ],
       articlesKicker: "RECENT_WRITING",
       articlesTitle: "最近写的",
@@ -254,7 +254,7 @@ export const JEFFREY_SITE_DATA = {
       items: [
         ["01", "Reliability engineering", "Production assurance, capacity planning, risk review and high availability drills."],
         ["02", "Architecture efficiency tools", "Turning repeated operations into platform capabilities, buttons, APIs and workflows."],
-        ["03", "AI Infra / Agent", "Exploring AI engineering, observable workflows and productivity tools for individuals and teams."],
+        ["03", "AI Infra / Agent", "Exploring AI engineering, observable workflows and productivity tools for teams."],
         ["04", "Knowledge sharing", "Using writing, illustrations and tools to make engineering experience easier to reuse."]
       ],
       metrics: [
@@ -314,13 +314,13 @@ export const JEFFREY_SITE_DATA = {
     },
     outputs: {
       title: "Turning experience into reusable system notes",
-      subtitle: "I am gradually organizing SRE, AI Infra, automation and personal tooling practice into writing, diagrams and small tools.",
+      subtitle: "Everything here I actually ran, numbers and costs kept in the text.",
       noteTitle: "VISUAL SYSTEM",
-      note: "The site and avatar follow the Jeffrey design system: cream base, engineering blue, warm yellow annotations. Article illustrations use the Jeffrey & Byte system: 16:9 hand-drawn, with Jeffrey and his AI assistant Byte carrying the core action in a blue-yellow palette, plus sparse Chinese labels.",
+      note: "The site and avatar follow the Jeffrey design system: cream base, engineering blue, warm yellow annotations.\nArticle illustrations use Jeffrey & Byte: 16:9 hand-drawn, with Jeffrey and Byte carrying the core action and only sparse Chinese labels.",
       items: [
         ["SRE Runbook", "Reliability, capacity, assurance, review", "Executable checklists and review templates from production experience.", "Featured draft"],
         ["AI Infra Notes", "Agents, workflows, observability", "Real problems between AI demos and usable engineering tools.", "Planned"],
-        ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content, visuals and automation into a long-term system.", "In progress"]
+        ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content and automation into a long-term system.", "In progress"]
       ],
       articlesKicker: "RECENT_WRITING",
       articlesTitle: "Recent writing",
