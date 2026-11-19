@@ -198,8 +198,9 @@ function render() {
       </div>
     ` : "";
 
+    const hasPoints = Array.isArray(points) && points.length > 0;
     return `
-    <article class="timeline-card ${index === 0 ? "timeline-card--current" : ""} reveal">
+    <article class="timeline-card ${index === 0 ? "timeline-card--current" : ""}${hasPoints ? "" : " timeline-card--compact"} reveal">
       <aside class="timeline-meta">
         <div class="timeline-date">${date}</div>
       </aside>
@@ -212,14 +213,14 @@ function render() {
           </div>
         </div>
         <p>${desc}</p>
-        <div class="timeline-runbook">
+        ${hasPoints ? `<div class="timeline-runbook">
           ${points.map((point, pointIndex) => `
             <div class="timeline-runbook-item">
               <b>${labels[pointIndex] || String(pointIndex + 1).padStart(2, "0")}</b>
               <span>${point}</span>
             </div>
           `).join("")}
-        </div>
+        </div>` : ""}
       </div>
     </article>
   `;

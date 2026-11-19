@@ -1773,6 +1773,25 @@ html[lang="en"] .belief-slide small {
 .timeline-logo--brand-red img {
   filter: brightness(0) saturate(100%) invert(31%) sepia(88%) saturate(3382%) hue-rotate(345deg) brightness(101%) contrast(93%);
 }
+.timeline-card--compact {
+  padding-top: 22px;
+  padding-bottom: 24px;
+}
+.timeline-card--compact::before {
+  top: 46px;
+}
+.timeline-card--compact h3 {
+  font-size: clamp(1.06rem, 1.5vw, 1.2rem);
+}
+.timeline-card--compact .timeline-company-row {
+  margin-bottom: 10px;
+}
+.timeline-card--compact p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 64em;
+}
+
 .timeline-runbook {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1783,8 +1802,8 @@ html[lang="en"] .belief-slide small {
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
-  gap: 9px;
-  padding: 16px;
+  gap: 8px;
+  padding: 17px 18px;
   border-radius: 14px;
   background: rgba(250, 246, 235, 0.68);
   border: 1px dashed rgba(43, 127, 216, 0.18);
@@ -1798,8 +1817,9 @@ html[lang="en"] .belief-slide small {
 }
 .timeline-runbook-item span {
   color: var(--ink-2);
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.93rem;
+  line-height: 1.64;
+  text-wrap: pretty;
 }
 
 .skills-grid {

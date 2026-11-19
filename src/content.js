@@ -108,7 +108,7 @@ export const JEFFREY_SITE_DATA = {
         ["2019 - 2020", "资深配置管理工程师", "玖富集团", "负责应用交付能力建设、效率提升和成本优化。", ["交付链路依赖多、沟通成本高，私有化集群迁移需要更稳定的一键化能力。", "推广并优化 CICD 平台，维护多套 k8s 集群，开发自动部署工具并管理 Git、制品库和 Jenkins。", "把交付经验从人工协调推进到平台流程，减少重复操作，提高团队发布和迁移效率。"]],
         ["2017 - 2019", "运维工程师", "某互金&区块链创业公司", "从互金到区块链，随公司二次创业，一人运维负责核心产品。", ["团队小、变化快，核心产品需要在有限人力下保持交付、部署和线上稳定。", "设计微服务持续交付方案，推动业务容器化，从裸 docker 逐步走向 Kubernetes。", "形成现场/远程一键部署能力，让创业阶段的交付和运维更可控。"]],
         ["2016 - 2017", "项目运维工程师(实习)", "北京百分点科技有限公司", "参与项目交付与长期运维，支持服务器、网络和服务部署。", ["项目现场复杂，既要完成交付，也要长期维护、排障和应急恢复。", "参与大数据应用架构设计、服务分配、部署实施、故障排除和数据备份恢复。", "建立了对生产环境、客户现场和长期稳定维护的第一手理解。"]],
-        ["2012 - 2016", "通信工程学士", "燕山大学", "主修通信工程，多次获得奖学金，参与校内外实践项目。", ["从课堂、社团到社会实践，需要在真实团队里组织活动、推进项目和承担责任。", "担任五星级社团会长，参与戴尔实践项目与暑期支教，持续训练沟通和组织能力。", "为后续跨团队协作、项目管理和技术表达打下底层能力。"]]
+        ["2012 - 2016", "通信工程学士", "燕山大学", "主修通信工程，拿过几次奖学金；做过五星级社团会长，参加过戴尔实践项目和暑期支教。", []]
       ]
     },
     skills: {
@@ -299,7 +299,7 @@ export const JEFFREY_SITE_DATA = {
         ["2019 - 2020", "Senior Configuration Engineer", "9F Group", "Focused on application delivery, efficiency and cost optimization.", ["Delivery involved many dependencies and private cluster migration needed safer one-click deployment.", "Optimized CI/CD, maintained Kubernetes clusters, built deployment tools and managed Git, artifact stores and Jenkins.", "Moved delivery from manual coordination toward platform workflows with less repeated work."]],
         ["2017 - 2019", "Operations Engineer", "Fintech & Blockchain Startup", "Sole DevOps engineer for core products during a second startup phase.", ["A small fast-moving team needed reliable delivery, deployment and operations with limited manpower.", "Designed microservice delivery, drove containerization and moved from raw Docker toward Kubernetes.", "Built remote and on-site one-click deployment capabilities for more controlled delivery."]],
         ["2016 - 2017", "Project Ops Intern", "Percent Technology", "Supported project delivery and long-term operations.", ["On-site projects required delivery, maintenance, troubleshooting and emergency recovery.", "Worked on big-data architecture design, service allocation, deployment, incident handling and backups.", "Built first-hand understanding of production environments and long-term operational responsibility."]],
-        ["2012 - 2016", "B.E. in Communication Engineering", "Yanshan University", "Communication engineering major with scholarships and campus practice.", ["Classroom, student organizations and field practice required real teamwork and ownership.", "Led a five-star student association, joined Dell's campus program and participated in volunteer teaching.", "Built the foundation for cross-team collaboration, project management and technical communication."]]
+        ["2012 - 2016", "B.E. in Communication Engineering", "Yanshan University", "Communication engineering major with scholarships; led a five-star student association, joined Dell's campus program and taught in a summer volunteer program.", []]
       ]
     },
     skills: {
