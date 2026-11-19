@@ -13,7 +13,7 @@ export const JEFFREY_SITE_DATA = {
     hero: {
       eyebrow: "AI INFRA / SRE / 架构效率工具建设者",
       title: "把复杂系统<br><span class=\"accent\">讲清楚</span>，<br>把可靠性<br>做成产品能力",
-      description: "我是 Jeffrey Li，一名热爱技术的 SRE 工程师。主攻电商、新能源汽车和复杂系统稳定性建设，也在持续探索 AI Agent、自动化平台和架构效率工具。",
+      description: "我是 Jeffrey Li，一名还在值班的 SRE。给 Agent 开权限、花五美元把插件上架、重装系统最后只剩 15 个工具，这些我都真干过。哪里翻车，花了多少钱，文章里写着。",
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agent × 架构效率工具",
       actions: [
@@ -204,7 +204,7 @@ export const JEFFREY_SITE_DATA = {
     hero: {
       eyebrow: "AI INFRA / SRE / ARCHITECTURE EFFICIENCY BUILDER",
       title: "Make systems<br><span class=\"accent\">clear</span>.<br>Build reliability<br>as a capability",
-      description: "I'm Jeffrey Li, a Site Reliability Engineer focused on e-commerce, EV cloud services, AI Agent engineering and automation platforms.",
+      description: "I'm Jeffrey Li, an SRE who is still on call. Giving an agent root, paying five dollars to get a plugin listed, reinstalling a Mac and ending up with 15 tools: I did all of that. Where it broke and what it cost is written down.",
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agents × architecture-efficiency tools",
       actions: [
