@@ -232,37 +232,43 @@ function render() {
       <p>${desc}</p>
     </article>
   `).join("");
-  $("#outputsGrid").innerHTML = data[currentLang].outputs.items.map(([title, meta, desc, status], index) => `
-    <article class="output-card ${index === 0 ? "output-card--featured" : "output-card--secondary"} reveal" data-index="${String(index + 1).padStart(2, "0")}">
+  $("#outputsGrid").innerHTML = data[currentLang].outputs.items.map(([title, meta, desc, status, url], index) => {
+    const cardClass = `output-card ${index === 0 ? "output-card--featured" : "output-card--secondary"} reveal${url ? " output-card--link" : ""}`;
+    const inner = `
       <span class="output-status">${status}</span>
+      ${url ? '<span class="output-arrow" aria-hidden="true">↗</span>' : ""}
       <h3>${title}</h3>
       <p class="output-meta">${meta}</p>
       <p>${desc}</p>
-    </article>
-  `).join("");
+    `;
+    return url
+      ? `<a class="${cardClass}" data-index="${String(index + 1).padStart(2, "0")}" href="${url}" target="_blank" rel="noopener noreferrer">${inner}</a>`
+      : `<article class="${cardClass}" data-index="${String(index + 1).padStart(2, "0")}">${inner}</article>`;
+  }).join("");
   const articleList = $("#articleList");
   if (articleList) {
     const groups = data[currentLang].outputs.articleGroups || [];
-    articleList.innerHTML = groups.map((group, groupIndex) => `
-      <section class="article-group">
-        <div class="article-group-head">
-          <span class="article-group-index">${String(groupIndex + 1).padStart(2, "0")}</span>
-          <h4 class="article-group-label">${group.label}</h4>
-          <p class="article-group-hint">${group.hint}</p>
-        </div>
-        <div class="article-group-items">
-          ${group.items.map(([date, title, desc, url]) => `
-            <a class="article-item" href="${url}" target="_blank" rel="noopener noreferrer">
-              <time class="article-date" datetime="${date}">${date}</time>
-              <span class="article-main">
-                <span class="article-title">${title}<span class="article-arrow" aria-hidden="true">↗</span></span>
-                <span class="article-desc">${desc}</span>
-              </span>
-            </a>
-          `).join("")}
-        </div>
-      </section>
+    const allItems = groups.flatMap((group) => group.items);
+    const featuredUrls = data[currentLang].outputs.featured || [];
+    const featuredItems = featuredUrls
+      .map((url) => allItems.find((item) => item[3] === url))
+      .filter(Boolean);
+    const shown = featuredItems.length ? featuredItems : allItems.slice(0, 4);
+    articleList.innerHTML = shown.map(([date, title, desc, url]) => `
+      <a class="article-item" href="${url}" target="_blank" rel="noopener noreferrer">
+        <time class="article-date" datetime="${date}">${date}</time>
+        <span class="article-main">
+          <span class="article-title">${title}<span class="article-arrow" aria-hidden="true">↗</span></span>
+          <span class="article-desc">${desc}</span>
+        </span>
+      </a>
     `).join("");
+    const more = $("#articleMore");
+    if (more) {
+      const label = data[currentLang].outputs.allLabel || "全部 {n} 篇";
+      more.innerHTML = `<span>${label.replace("{n}", allItems.length)}</span><span class="article-more-arrow" aria-hidden="true">→</span>`;
+      more.setAttribute("href", "/writing/");
+    }
   }
   $("#contactActions").innerHTML = data[currentLang].contact.actions.map(renderContactAction).join("");
   initProjectTilt();

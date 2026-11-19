@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SRE、AI Agent、工具和个人 IP 相关的文章合集，按主题分组，都发在公众号「言之有你」。">
+  <meta name="keywords" content="Jeffrey Li,SRE,AI Infra,Agent,稳定性,公众号,言之有你">
+  <meta name="author" content="Jeffrey Li">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#2B7FD8">
+  <meta name="application-name" content="Jeffrey Space">
+  <meta name="apple-mobile-web-app-title" content="Jeffrey Space">
+  <link rel="canonical" href="https://hijeffrey.com/writing/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hijeffrey.com/writing/">
+  <meta property="og:site_name" content="Jeffrey Space">
+  <meta property="og:title" content="写作 · Jeffrey Li">
+  <meta property="og:description" content="SRE、AI Agent、工具和个人 IP 相关的文章合集。">
+  <meta property="og:image" content="https://hijeffrey.com/assets/images/jeffrey-ip-hero.png">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <script defer src="https://umami.5179.top/script.js" data-website-id="7f386add-6ef3-4c02-9f7c-fcaf442d64c1"></script>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fira+Code:wght@400;500;700&family=Fraunces:opsz,wght@9..144,900&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+  <title>写作 · Jeffrey Li</title>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Jeffrey home">
+        <span class="brand-mark">J</span>
+        <span>Jeffrey · SRE</span>
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="lang" aria-label="Language switch">
+        <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
+        <span>/</span>
+        <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
+      </div>
+      <button class="nav-menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">
+        <span class="nav-menu-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span data-nav-toggle-label>菜单</span>
+      </button>
+    </div>
+    <div class="lang mobile-lang" aria-label="Mobile language switch">
+      <button type="button" data-lang="zh" class="active" aria-label="切换到简体中文">简</button>
+      <span>/</span>
+      <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
+    </div>
+  </nav>
+  <div class="nav-scrim" data-nav-scrim hidden></div>
+
+  <main>
+    <section class="section page-head" id="writing">
+      <div class="container">
+        <header class="page-head-inner reveal">
+          <a class="back-link" id="backHome" href="/"></a>
+          <span class="section-kicker" data-i18n="writingPage.kicker"></span>
+          <h1 data-i18n="writingPage.title"></h1>
+          <p class="section-desc" data-i18n="writingPage.subtitle"></p>
+          <span class="page-count" id="writingCount"></span>
+        </header>
+        <div class="article-list article-list--full reveal" id="writingList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-signature">
+        <strong class="footer-signature-name">Jeffrey</strong>
+        <span class="footer-signature-role">AI Infra / SRE / Agent</span>
+        <span class="footer-signature-line">Build reliable systems, then make them easier to understand.</span>
+      </div>
+      <div class="footer-links">
+        <span class="footer-copyright">© 2026 Site Reliability Engineer.</span>
+        <span class="footer-compliance" data-domain-compliance hidden>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">京ICP备19051297号</a>
+          <a class="beian-link" href="https://beian.mps.gov.cn/#/query/webSearch?code=11011402054821" target="_blank" rel="noreferrer">
+            <img src="/assets/images/beiantubiao.png" alt="" aria-hidden="true">
+            <span>京公网安备11011402054821号</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/writing.js"></script>
+</body>
+</html>

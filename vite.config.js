@@ -55,6 +55,10 @@ export default defineConfig({
   } : undefined,
   build: {
     rollupOptions: {
+      input: {
+        main: resolve(process.cwd(), "index.html"),
+        writing: resolve(process.cwd(), "writing/index.html")
+      },
       output: {
         entryFileNames: "assets/js/[name]-[hash].js",
         chunkFileNames: "assets/js/[name]-[hash].js",

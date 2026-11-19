@@ -129,11 +129,18 @@ export const JEFFREY_SITE_DATA = {
       items: [
         ["SRE Runbook", "稳定性、容量、重保、复盘", "把线上保障经验拆成可执行清单和可复盘模板。", "精选整理中"],
         ["AI Infra Notes", "Agent、工作流、可观察性", "记录 AI 工程化从 demo 到可用工具之间的真实问题。", "计划发布"],
-        ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容和自动化，做成一套长期系统。", "持续建设中"]
+        ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容和自动化，做成一套长期系统。", "持续建设中", "https://github.com/liyongjian5179/jeffrey-design-system"]
       ],
       articlesKicker: "RECENT_WRITING",
       articlesTitle: "最近写的",
-      articlesSubtitle: "都发在公众号「言之有你」，点标题看原文。",
+      articlesSubtitle: "都发在公众号「言之有你」。挑了几篇放在这里，全部文章在列表页。",
+      featured: [
+        "https://mp.weixin.qq.com/s/GeT57C62qgZdUN5DAn4oNA",
+        "https://mp.weixin.qq.com/s/keRE1Hp1xGWnTQEIm2144Q",
+        "https://mp.weixin.qq.com/s/64c3pGzsRJNFV34j0DL_PA",
+        "https://mp.weixin.qq.com/s/ntyCM72O3Qga8cxms2oh_A"
+      ],
+      allLabel: "全部 {n} 篇",
       articleGroups: [
         {
           label: "稳定性与线上",
@@ -188,6 +195,15 @@ export const JEFFREY_SITE_DATA = {
       ],
       qrTitle: "关注我的微信公众号",
       qrDescription: "扫码关注，后续会持续分享 SRE、AI Infra、个人 IP 和工具化实践。"
+    },
+    writingPage: {
+      kicker: "WRITING_INDEX",
+      title: "写下来的东西",
+      subtitle: "都发在公众号「言之有你」，按主题分成四组。点标题看原文，中文长文。",
+      back: "回到首页",
+      count: "共 {n} 篇",
+      metaTitle: "写作 · Jeffrey Li",
+      metaDescription: "SRE、AI Agent、工具和个人 IP 相关的文章合集，按主题分组，都发在公众号「言之有你」。"
     }
   },
   en: {
@@ -320,11 +336,18 @@ export const JEFFREY_SITE_DATA = {
       items: [
         ["SRE Runbook", "Reliability, capacity, assurance, review", "Executable checklists and review templates from production experience.", "Featured draft"],
         ["AI Infra Notes", "Agents, workflows, observability", "Real problems between AI demos and usable engineering tools.", "Planned"],
-        ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content and automation into a long-term system.", "In progress"]
+        ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content and automation into a long-term system.", "In progress", "https://github.com/liyongjian5179/jeffrey-design-system"]
       ],
       articlesKicker: "RECENT_WRITING",
       articlesTitle: "Recent writing",
-      articlesSubtitle: "Originally published on my WeChat account. Titles link to the originals (Chinese).",
+      articlesSubtitle: "Originally published on my WeChat account. A few picks here; the full list has its own page.",
+      featured: [
+        "https://mp.weixin.qq.com/s/GeT57C62qgZdUN5DAn4oNA",
+        "https://mp.weixin.qq.com/s/keRE1Hp1xGWnTQEIm2144Q",
+        "https://mp.weixin.qq.com/s/64c3pGzsRJNFV34j0DL_PA",
+        "https://mp.weixin.qq.com/s/ntyCM72O3Qga8cxms2oh_A"
+      ],
+      allLabel: "All {n} posts",
       articleGroups: [
         {
           label: "Reliability and on-call",
@@ -379,6 +402,15 @@ export const JEFFREY_SITE_DATA = {
       ],
       qrTitle: "Follow my WeChat official account",
       qrDescription: "Scan to follow updates on SRE, AI Infra, personal IP and tooling practice."
+    },
+    writingPage: {
+      kicker: "WRITING_INDEX",
+      title: "Things I wrote down",
+      subtitle: "All published on my WeChat account, grouped by theme. Titles link to the originals, which are in Chinese.",
+      back: "Back to home",
+      count: "{n} posts",
+      metaTitle: "Writing · Jeffrey Li",
+      metaDescription: "Essays on SRE, AI agents, tooling and personal IP, grouped by theme and published on my WeChat account."
     }
   }
 };
