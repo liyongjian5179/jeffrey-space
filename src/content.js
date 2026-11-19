@@ -206,7 +206,7 @@ export const JEFFREY_SITE_DATA = {
       title: "Make systems<br><span class=\"accent\">clear</span>.<br>Build reliability<br>as a capability",
       description: "I'm Jeffrey Li, an SRE who is still on call. Giving an agent root, paying five dollars to get a plugin listed, reinstalling a Mac and ending up with 15 tools: I did all of that. Where it broke and what it cost is written down.",
       noteTitle: "CURRENT FOCUS",
-      note: "SRE × AI Agents × architecture-efficiency tools",
+      note: "SRE × AI Agents × tooling",
       actions: [
         ["experience", "Explore experience", "btn-primary"],
         ["contact", "Contact me", "btn-secondary"]
