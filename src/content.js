@@ -125,11 +125,55 @@ export const JEFFREY_SITE_DATA = {
       title: "把经验写成可以被复用的系统笔记",
       subtitle: "我会持续把 SRE、AI Infra、自动化和个人 IP 工具化的实践整理成文章、图解和小工具。",
       noteTitle: "VISUAL SYSTEM",
-      note: "站点首屏和头像使用 Jeffrey 个人形象；文章正文配图使用“小黑”系统：16:9 白底手绘、黑色小角色参与核心动作，少量红橙蓝中文批注。",
+      note: "站点与头像沿用 Jeffrey 设计系统：奶油底、工程蓝、暖黄批注。文章正文配图用 Jeffrey & Byte 插画系统：16:9 横版手绘，Jeffrey 和他的 AI 小助手 Byte 承担核心动作，蓝黄配色，只留少量中文标注。",
       items: [
         ["SRE Runbook", "稳定性、容量、重保、复盘", "把线上保障经验拆成可执行清单和可复盘模板。", "精选整理中"],
         ["AI Infra Notes", "Agent、工作流、可观察性", "记录 AI 工程化从 demo 到可用工具之间的真实问题。", "计划发布"],
         ["Jeffrey System", "个人 IP、设计系统、工具化", "把个人站、内容、视觉和自动化逐步做成一个长期系统。", "持续建设中"]
+      ],
+      articlesKicker: "RECENT_WRITING",
+      articlesTitle: "最近写的",
+      articlesSubtitle: "都发在公众号「言之有你」，点标题看原文。",
+      articleGroups: [
+        {
+          label: "稳定性与线上",
+          hint: "如果你要为一场大促或发布会的结果负责",
+          items: [
+            ["2026-11-06", "我让AI住进服务器，它把自己杀了", "把权限交给 Agent 之后真实发生的事，以及我改了什么。", "https://mp.weixin.qq.com/s/GeT57C62qgZdUN5DAn4oNA"],
+            ["2026-05-15", "SRE 的下午茶：AI 自己发现了一次暴力破解", "值班时 AI 报出一条异常，顺着查下去抓到了入侵。", "https://mp.weixin.qq.com/s/HJn0j6zyb6AEvtTTEP2wdQ"],
+            ["2026-05-14", "你给AI的权限，比你给实习生的还大", "同一件事，人入职要审三遍，Agent 却直接给了 root。", "https://mp.weixin.qq.com/s/-GXZ3rbCqG2FyIdQjlPk5w"]
+          ]
+        },
+        {
+          label: "把 AI 用进日常",
+          hint: "如果你刚开始把手上的活交给 Agent",
+          items: [
+            ["2026-08-14", "我用 AI 把晋升汇报练到分秒不差", "让 AI 当评委反复演练，最后差点抱着错误的电脑上台。", "https://mp.weixin.qq.com/s/ntyCM72O3Qga8cxms2oh_A"],
+            ["2026-06-16", "我是个运维，闲得慌，给 AI 装了个 Obsidian 大脑", "把本地知识库接给 AI，让它记住我在想什么。", "https://mp.weixin.qq.com/s/st9MoM-QUn9JmD8ESkvqCQ"],
+            ["2026-04-18", "DeepSeek TUI：终端里的 AI 编码搭子", "在终端里跟模型结对，比在浏览器里贴代码顺手。", "https://mp.weixin.qq.com/s/tNGaS0_WYVe4b4KZiMIv6g"]
+          ]
+        },
+        {
+          label: "自己动手做点东西",
+          hint: "如果你也想做一个自己的小工具",
+          items: [
+            ["2026-11-17", "重装一次 Mac，我只装这 15 个", "重装完系统我会一个个装回来的东西，以及为什么最后停在 15 样。", "https://mp.weixin.qq.com/s/keRE1Hp1xGWnTQEIm2144Q"],
+            ["2026-11-13", "免费额度用到 79.4%：我薅了半年羊毛，差点自己把它薅穿", "半年攒下的免费额度，用完之后算了一笔账。", "https://mp.weixin.qq.com/s/qHL3xqR62F2cJqVcx6lUkw"],
+            ["2026-11-10", "188 次安装，真人只有 7 个", "花 5 美元把插件上架 Chrome 商店的第一周，数字是怎么骗人的。", "https://mp.weixin.qq.com/s/64c3pGzsRJNFV34j0DL_PA"],
+            ["2026-11-05", "网页上看到二维码还要掏手机？我一怒之下写了个插件", "从一怒之下到上架商店，一个右键扫码插件是怎么做出来的。", "https://mp.weixin.qq.com/s/Mo7V316pORswcwUei_elKw"]
+          ]
+        },
+        {
+          label: "写东西与个人 IP",
+          hint: "如果你在考虑要不要有个自己的地方",
+          items: [
+            ["2026-07-02", "为了一个头像，我折腾了两天", "一个人像头像背后，那些看起来不值得的两天。", "https://mp.weixin.qq.com/s/_Ps-lH1DbxvxFuu15cMhuQ"],
+            ["2026-05-13", "你发的是文档，别人发的是作品", "交付物的形态，决定了别人怎么看你做的事。", "https://mp.weixin.qq.com/s/kZvzBT9DkMdaDexHXgoR0w"],
+            ["2026-05-09", "为什么我开始反感「效率」这个词了", "效率被当成目标之后，多出来的那些消耗。", "https://mp.weixin.qq.com/s/VzZnp00c15kfWVqqc6DQeg"],
+            ["2026-05-08", "2026年了，还不碰AI的技术人，正在被悄悄淘汰", "不是要你转行，是要你先把手上的活交给它试一次。", "https://mp.weixin.qq.com/s/_W4PJEUOyvYqDujACZTcEQ"],
+            ["2026-05-07", "你的名字在互联网上，还是一片空白吗？", "搜自己名字只有招聘信息时，我开始动手做个人站。", "https://mp.weixin.qq.com/s/s2kRpRuAFxBSelkzng7ULw"]
+          ]
+        }
       ]
     },
     contact: {
@@ -272,11 +316,55 @@ export const JEFFREY_SITE_DATA = {
       title: "Turning experience into reusable system notes",
       subtitle: "I am gradually organizing SRE, AI Infra, automation and personal tooling practice into writing, diagrams and small tools.",
       noteTitle: "VISUAL SYSTEM",
-      note: "The site hero and avatar use Jeffrey's personal IP. Article illustrations use the Xiaohei system: 16:9 white-background hand-drawn images, a small black character doing the core action, and sparse red/orange/blue Chinese annotations.",
+      note: "The site and avatar follow the Jeffrey design system: cream base, engineering blue, warm yellow annotations. Article illustrations use the Jeffrey & Byte system: 16:9 hand-drawn, with Jeffrey and his AI assistant Byte carrying the core action in a blue-yellow palette, plus sparse Chinese labels.",
       items: [
         ["SRE Runbook", "Reliability, capacity, assurance, review", "Executable checklists and review templates from production experience.", "Featured draft"],
         ["AI Infra Notes", "Agents, workflows, observability", "Real problems between AI demos and usable engineering tools.", "Planned"],
         ["Jeffrey System", "Personal IP, design system, tooling", "Building this site, content, visuals and automation into a long-term system.", "In progress"]
+      ],
+      articlesKicker: "RECENT_WRITING",
+      articlesTitle: "Recent writing",
+      articlesSubtitle: "Originally published on my WeChat account. Titles link to the originals (Chinese).",
+      articleGroups: [
+        {
+          label: "Reliability and on-call",
+          hint: "If you are the one who owns a launch or a sale event",
+          items: [
+            ["2026-11-06", "I gave an AI agent root, and it killed itself", "What actually happened after I handed over permissions.", "https://mp.weixin.qq.com/s/GeT57C62qgZdUN5DAn4oNA"],
+            ["2026-05-15", "An agent caught a brute-force attack before I did", "A routine on-call afternoon that turned into an incident.", "https://mp.weixin.qq.com/s/HJn0j6zyb6AEvtTTEP2wdQ"],
+            ["2026-05-14", "Your AI has more access than your intern", "A new hire gets three reviews. The agent got root.", "https://mp.weixin.qq.com/s/-GXZ3rbCqG2FyIdQjlPk5w"]
+          ]
+        },
+        {
+          label: "Putting agents to work",
+          hint: "If you just started handing real tasks to an agent",
+          items: [
+            ["2026-08-14", "Rehearsing a promotion talk with AI", "Using a model as a hostile reviewer, and the laptop I nearly carried on stage.", "https://mp.weixin.qq.com/s/ntyCM72O3Qga8cxms2oh_A"],
+            ["2026-06-16", "Giving an AI agent an Obsidian brain", "Connecting a local knowledge base so the agent remembers context.", "https://mp.weixin.qq.com/s/st9MoM-QUn9JmD8ESkvqCQ"],
+            ["2026-04-18", "DeepSeek TUI: an AI pair coder in the terminal", "Pairing with a model in the terminal beats pasting code into a browser.", "https://mp.weixin.qq.com/s/tNGaS0_WYVe4b4KZiMIv6g"]
+          ]
+        },
+        {
+          label: "Building small tools",
+          hint: "If you want to make one of your own",
+          items: [
+            ["2026-11-17", "Reinstalling macOS: the only 15 tools I keep", "What I install first, and why the list ends at fifteen.", "https://mp.weixin.qq.com/s/keRE1Hp1xGWnTQEIm2144Q"],
+            ["2026-11-13", "Burning through a 79.4% free tier", "Six months of free quota, then the bill I did not expect.", "https://mp.weixin.qq.com/s/qHL3xqR62F2cJqVcx6lUkw"],
+            ["2026-11-10", "188 installs, 7 real users", "The first week of a $5 Chrome extension, and how the numbers lie.", "https://mp.weixin.qq.com/s/64c3pGzsRJNFV34j0DL_PA"],
+            ["2026-11-05", "A right-click QR scanner, built out of irritation", "From one angry afternoon to a published Chrome extension.", "https://mp.weixin.qq.com/s/Mo7V316pORswcwUei_elKw"]
+          ]
+        },
+        {
+          label: "Writing and personal IP",
+          hint: "If you are thinking about owning a place on the internet",
+          items: [
+            ["2026-07-02", "Two days for one avatar", "The unglamorous work behind a single profile picture.", "https://mp.weixin.qq.com/s/_Ps-lH1DbxvxFuu15cMhuQ"],
+            ["2026-05-13", "You shipped a document. They shipped a piece of work.", "How the shape of a deliverable changes how it is read.", "https://mp.weixin.qq.com/s/kZvzBT9DkMdaDexHXgoR0w"],
+            ["2026-05-09", "Why I stopped using the word efficiency", "What gets lost when efficiency becomes the goal.", "https://mp.weixin.qq.com/s/VzZnp00c15kfWVqqc6DQeg"],
+            ["2026-05-08", "Engineers who never touch AI are quietly falling behind", "You do not need a new career. You need to hand over one task.", "https://mp.weixin.qq.com/s/_W4PJEUOyvYqDujACZTcEQ"],
+            ["2026-05-07", "Is your name still blank on the internet?", "Why I started building this site.", "https://mp.weixin.qq.com/s/s2kRpRuAFxBSelkzng7ULw"]
+          ]
+        }
       ]
     },
     contact: {

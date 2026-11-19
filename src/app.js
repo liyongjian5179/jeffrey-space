@@ -239,6 +239,30 @@ function render() {
       <p>${desc}</p>
     </article>
   `).join("");
+  const articleList = $("#articleList");
+  if (articleList) {
+    const groups = data[currentLang].outputs.articleGroups || [];
+    articleList.innerHTML = groups.map((group, groupIndex) => `
+      <section class="article-group">
+        <div class="article-group-head">
+          <span class="article-group-index">${String(groupIndex + 1).padStart(2, "0")}</span>
+          <h4 class="article-group-label">${group.label}</h4>
+          <p class="article-group-hint">${group.hint}</p>
+        </div>
+        <div class="article-group-items">
+          ${group.items.map(([date, title, desc, url]) => `
+            <a class="article-item" href="${url}" target="_blank" rel="noopener noreferrer">
+              <time class="article-date" datetime="${date}">${date}</time>
+              <span class="article-main">
+                <span class="article-title">${title}<span class="article-arrow" aria-hidden="true">↗</span></span>
+                <span class="article-desc">${desc}</span>
+              </span>
+            </a>
+          `).join("")}
+        </div>
+      </section>
+    `).join("");
+  }
   $("#contactActions").innerHTML = data[currentLang].contact.actions.map(renderContactAction).join("");
   initProjectTilt();
   attachReveal();
