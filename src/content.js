@@ -12,25 +12,25 @@ export const JEFFREY_SITE_DATA = {
     ],
     hero: {
       eyebrow: "AI INFRA / SRE / 架构效率工具建设者",
-      title: "把复杂系统<br><span class=\"accent\">讲清楚</span>，<br>把可靠性<br>做成产品能力",
-      description: "我是 Jeffrey Li，一名热爱技术的 SRE 工程师。主攻电商、新能源汽车和复杂系统稳定性建设，也在持续探索 AI Agent、自动化平台和架构效率工具。",
+      title: "还在值班的人<br>把交给 AI 的活<br>和它的<span class=\"accent\">账单</span><br>一起写出来",
+      description: "这里不是讲 AI 能干什么。写的是我真做过的事：让 Agent 接管一台服务器、写个插件上架商店、重装系统只留 15 个工具。做成了什么，花了多少时间和钱，哪里翻车，都在文章里。",
       noteTitle: "CURRENT FOCUS",
-      note: "SRE × AI Agent × 架构效率工具",
+      note: "SRE × Agent × 效率工具",
       actions: [
-        ["experience", "浏览经历", "btn-primary"],
-        ["contact", "联系我", "btn-secondary"]
+        ["outputs", "看我写过什么", "btn-primary"],
+        ["contact", "聊聊", "btn-secondary"]
       ],
       status: [
-        ["10+ Y", "工程经验"],
-        ["99.99%", "稳定性追求"],
-        ["AI × SRE", "当前方向"]
+        ["15", "篇公开复盘"],
+        ["1207", "单篇最高阅读"],
+        ["10+ Y", "一线经验"]
       ],
       console: {
-        title: "runbook.snapshot",
+        title: "field.notes",
         items: [
-          ["observe", "关键链路、容量、成本和风险先可见"],
-          ["codify", "经验沉淀成 runbook、平台和自动化"],
-          ["review", "用复盘把可靠性变成团队能力"]
+          ["run", "先在自己身上跑通，再谈能不能推广"],
+          ["cost", "时间、钱、踩坑成本都算给你看"],
+          ["fail", "翻车的地方不删，那才是别人最需要的"]
         ]
       }
     },
@@ -123,7 +123,7 @@ export const JEFFREY_SITE_DATA = {
     },
     outputs: {
       title: "把经验写成可以被复用的系统笔记",
-      subtitle: "我会持续把 SRE、AI Infra、自动化和个人 IP 工具化的实践整理成文章、图解和小工具。",
+      subtitle: "这些是我自己踩过的，数字和代价都写在文中。按你现在要解决的问题分了组，挑一组进去看。",
       noteTitle: "VISUAL SYSTEM",
       note: "站点与头像沿用 Jeffrey 设计系统：奶油底、工程蓝、暖黄批注。文章正文配图用 Jeffrey & Byte 插画系统：16:9 横版手绘，Jeffrey 和他的 AI 小助手 Byte 承担核心动作，蓝黄配色，只留少量中文标注。",
       items: [
@@ -203,25 +203,25 @@ export const JEFFREY_SITE_DATA = {
     ],
     hero: {
       eyebrow: "AI INFRA / SRE / ARCHITECTURE EFFICIENCY BUILDER",
-      title: "Make systems<br><span class=\"accent\">clear</span>.<br>Build reliability<br>as a capability",
-      description: "I'm Jeffrey Li, a Site Reliability Engineer focused on e-commerce, EV cloud services, AI Agent engineering and automation platforms.",
+      title: "Still on call.<br>Writing down what<br>I hand to AI, and<br>what it <span class=\"accent\">costs</span>",
+      description: "This is not a pitch for what AI can do. It is what I actually ran: letting an agent take over a server, shipping a plugin to the Chrome store, reinstalling a Mac with 15 tools. What worked, what it cost in time and money, and where it broke — all in the writing.",
       noteTitle: "CURRENT FOCUS",
       note: "SRE × AI Agents × architecture-efficiency tools",
       actions: [
-        ["experience", "Explore experience", "btn-primary"],
-        ["contact", "Contact me", "btn-secondary"]
+        ["outputs", "Read the writing", "btn-primary"],
+        ["contact", "Say hello", "btn-secondary"]
       ],
       status: [
-        ["10+ Y", "Experience"],
-        ["99.99%", "Reliability goal"],
-        ["AI × SRE", "Current focus"]
+        ["15", "Public write-ups"],
+        ["1207", "Most-read article"],
+        ["10+ Y", "Hands-on"]
       ],
       console: {
-        title: "runbook.snapshot",
+        title: "field.notes",
         items: [
-          ["observe", "Make critical paths, capacity, cost and risk visible first"],
-          ["codify", "Turn experience into runbooks, platforms and automation"],
-          ["review", "Use postmortems to make reliability a team capability"]
+          ["run", "Run it on myself before claiming it works for others"],
+          ["cost", "Time, money and mistakes are all on the record"],
+          ["fail", "I keep the parts where it broke — that is what people need"]
         ]
       }
     },
@@ -314,7 +314,7 @@ export const JEFFREY_SITE_DATA = {
     },
     outputs: {
       title: "Turning experience into reusable system notes",
-      subtitle: "I am gradually organizing SRE, AI Infra, automation and personal tooling practice into writing, diagrams and small tools.",
+      subtitle: "Everything here I actually ran, with numbers and costs kept in the text. Grouped by the problem you may be facing — pick one and read in.",
       noteTitle: "VISUAL SYSTEM",
       note: "The site and avatar follow the Jeffrey design system: cream base, engineering blue, warm yellow annotations. Article illustrations use the Jeffrey & Byte system: 16:9 hand-drawn, with Jeffrey and his AI assistant Byte carrying the core action in a blue-yellow palette, plus sparse Chinese labels.",
       items: [
